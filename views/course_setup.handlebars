@@ -26,7 +26,6 @@
 
 <body>
 	<div class="container">
-		<h1>Manage Courses</h1>
 		<ul class="nav nav-tabs">
  		<li> <a href="/home">Home</a></li>
   		<li class="active"><a href="#">Manage Courses</a></li>
@@ -36,10 +35,10 @@
 		<!-- add new course -->
 		
   		<div class="col-sm-4">
-			<form class="form-addcourse" role="form">
+			<form class="form-addcourse" role="form" method="get" action="/course_add">
         	<h2 class="form-signin-heading">Search and Add</h2>
-        	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" required autofocus>
-        	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit" formaction="/home">+</button>
+        	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS 147" name="name" required autofocus>
+        	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit">+</button>
       </form>
       </div>
     
