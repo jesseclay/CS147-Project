@@ -1,3 +1,11 @@
+.courseButton h3, .courseButton h4, .courseButton h5 {
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-bottom: 3px;
+}
+
 .courseButton{
-	text-overflow: ellipsis;
+	margin-bottom: 5px;
 }
