@@ -9,6 +9,7 @@
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/course_setup.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
+    <link href="css/general.css" rel="stylesheet">
 
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -32,7 +33,7 @@
 		</ul>
 
 		<!-- add new course -->
-		<div class="row">
+		
   		<div class="col-sm-4">
 			<form class="form-addcourse" role="form">
         	<h2 class="form-signin-heading">Add Courses</h2>
@@ -40,7 +41,18 @@
         	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit" formaction="/home">+</button>
       </form>
       </div>
-		</div>
+    
+    <!-- view current courses -->
+    <div class="courselist">  
+    {{#each courses}}
+      <div class="row">
+        <button type="button" class="btn btn-default btn-sm btn-block">
+          <h4>{{name}}</h4>
+        </button>
+      </div>
+    {{/each}}
+    </div>
+		
 	</div>
 </body>
 </html>
