@@ -26,17 +26,18 @@
 
 <body>
 	<div class="container">
-		<h1>Welcome to study buddies</h1>
+		<h1>Manage Courses</h1>
 		<ul class="nav nav-tabs">
- 		<li> <a href="#">Home</a></li>
-  		<li><a href="#">Profile</a></li>
+ 		<li> <a href="/home">Home</a></li>
+  		<li class="active"><a href="#">Manage Courses</a></li>
+      <li><a href="/messages">Messages</a></li>
 		</ul>
 
 		<!-- add new course -->
 		
   		<div class="col-sm-4">
 			<form class="form-addcourse" role="form">
-        	<h2 class="form-signin-heading">Add Courses</h2>
+        	<h2 class="form-signin-heading">Search and Add</h2>
         	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" required autofocus>
         	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit" formaction="/home">+</button>
       </form>
