@@ -24,11 +24,26 @@
 		<h1>Home</h1>
 		<ul class="nav nav-tabs">
  		<li><a href="/home">Home</a></li>
-  		<li><a href="/profile">Profile</a></li>
+  		<li><a href="/course_setup">Manage Courses</a></li>
   		<li><a href="/messages">Messages</a></li>
 		</ul>
 
-		<h3>{{title}}</h3>
+		<h2>{{title}}</h2>
+		<div class="btn-group">
+  		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    	Let others know I'm working <span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" role="menu">
+    	<form class="form-signin" role="form">
+        	<input type="text" class="form-control" placeholder="Location" required autofocus>
+        	<input type="time" class="form-control" placeholder="time" required>
+          	<input type="text" class="form-control" placeholder="Assignment" required>
+        	<button class="btn btn-sm btn-primary btn-block" type="submit" formaction="/home">Post</button>
+  		</form>
+  		</ul>
+	</div>
+	<br>
+	<h1> Map or list of people working on class will go below</h1>
 
 	</div>
     <script src="js/jquery-1.11.0.js"></script>
