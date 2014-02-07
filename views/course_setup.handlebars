@@ -7,8 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/general.css" rel="stylesheet">
+    <link href="css/course_setup.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
+
+    <script src="js/jquery-1.11.0.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/hci-friends.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -25,28 +29,18 @@
 		<ul class="nav nav-tabs">
  		<li class="active"><a href="#">Home</a></li>
   		<li><a href="#">Profile</a></li>
-  		<li><a href="/messages">Messages</a></li>
 		</ul>
 
-		<!-- sign in -->
+		<!-- add new course -->
 		<div class="row">
-  			<div class="col-md-4">
-			<form class="form-signin" role="form">
-        	<h2 class="form-signin-heading">Please sign in</h2>
-        	<input type="email" class="form-control" placeholder="Email address" required autofocus>
-        	<input type="password" class="form-control" placeholder="Password" required>
-        	<label class="checkbox">
-          	<input type="checkbox" value="remember-me"> Remember me
-        	</label>
-        	<a href="/sign_up">Create new account</a>
-        	<button class="btn btn-lg btn-primary btn-block" type="submit" formaction="/home">Sign in</button>
-      		</form>
-      		</div>
+  		<div class="col-sm-4">
+			<form class="form-addcourse" role="form">
+        	<h2 class="form-signin-heading">Add Courses</h2>
+        	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" required autofocus>
+        	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit" formaction="/home">+</button>
+      </form>
+      </div>
 		</div>
 	</div>
-  
-  <script src="js/jquery-1.11.0.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/hci-friends.js"></script>
 </body>
 </html>
