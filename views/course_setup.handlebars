@@ -9,6 +9,7 @@
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/course_setup.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
+    <link href="css/general.css" rel="stylesheet">
 
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -25,22 +26,34 @@
 
 <body>
 	<div class="container">
-		<h1>Welcome to study buddies</h1>
+		<h1>Manage Courses</h1>
 		<ul class="nav nav-tabs">
  		<li> <a href="/home">Home</a></li>
-  		<li><a href="/profile">Profile</a></li>
+  		<li class="active"><a href="#">Manage Courses</a></li>
+      <li><a href="/messages">Messages</a></li>
 		</ul>
 
 		<!-- add new course -->
-		<div class="row">
+		
   		<div class="col-sm-4">
 			<form class="form-addcourse" role="form">
-        	<h2 class="form-signin-heading">Add Courses</h2>
+        	<h2 class="form-signin-heading">Search and Add</h2>
         	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" required autofocus>
         	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit" formaction="/home">+</button>
       </form>
       </div>
-		</div>
+    
+    <!-- view current courses -->
+    <div class="courselist">  
+    {{#each courses}}
+      <div class="row">
+        <button type="button" class="btn btn-default btn-sm btn-block">
+          <h4>{{name}}</h4>
+        </button>
+      </div>
+    {{/each}}
+    </div>
+		
 	</div>
 </body>
 </html>
