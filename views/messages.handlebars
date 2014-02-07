@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Sign up</title>	
+	<title>Messages</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -24,24 +24,30 @@
 
 <body>
 	<div class="container">
-		<h1>Sign Up</h1>
+		<h1>Messages</h1>
 		<ul class="nav nav-tabs">
- 		<li class="active"><a href="#">Home</a></li>
+ 		<li><a href="#">Home</a></li>
   		<li><a href="#">Profile</a></li>
-  		<li><a href="/messages">Messages</a></li>
+  		<li class="active"><a href="/messages">Messages</a></li>
 		</ul>
-		<div class="login">
-		<form class="form-signin" role="form">
-          <h2 class="form-signin-heading">Please enter your information</h2>
-          <input type="text" class="form-control" placeholder="Name" required autofocus>
-          <input type="email" class="form-control" placeholder="Email address" required autofocus>
-          <input type="password" class="form-control" placeholder="Password" required>
-           <input type="password" class="form-control" placeholder="Confirm Password" required>
-          <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" formaction="/home">Submit</button>
-    	</form>
+    <br>
+		<div class="message_list">
+      <input type="search " class="form-control" placeholder="Search">
+      <table class="table table-striped">
+        <tr> 
+          <td>Matt</td> 
+          <td>10:15 pm</td> 
+        </tr>
+        <tr> 
+          <td>Tom</td> 
+           <td>8:32 pm</td>
+        </tr>
+        <tr> 
+          <td>Brandon</td> 
+          <td>6:00 pm</td>
+        </tr>
+      </table>
+		
 		</div>
 	</div>
 </body>
