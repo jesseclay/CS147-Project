@@ -13,6 +13,7 @@ var home = require('./routes/home');
 var course_setup = require('./routes/course_setup');
 var sign_up = require('./routes/sign_up');
 var messages = require('./routes/messages');
+var map = require('./routes/map');
 
 // Example route
 // var user = require('./routes/user');
@@ -42,9 +43,10 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/home', home.view);
-app.get('/course_setup', course_setup.view)
+app.get('/course_setup', course_setup.view);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
+app.get('/map', map.view);
 // Example route
 // app.get('/users', user.list);
 

@@ -8,7 +8,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/general.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,23 +23,12 @@
 	<div class="container">
 		<h1>Home</h1>
 		<ul class="nav nav-tabs">
- 		<li class="active"><a href="#">Home</a></li>
+ 		<li><a href="/home">Home</a></li>
   		<li><a href="#">Profile</a></li>
   		<li><a href="/messages">Messages</a></li>
 		</ul>
 
-		<h3>My Classes</h3>
-
-		{{#each courses}}
-			<form id="courseform" role="form">
-			  	<input type="hidden" name="name" value="{{name}}">
-				<button type="submit" class="btn btn-default btn-lg btn-block courseButton" formaction="/map">
-					<h4>{{name}}: </h4>
-					<h5>{{description}}</h5>
-					<h6>Units: {{units}}</h6>
-				</button>
-		   </form>
-		{{/each}}
+		<h3>{{title}}</h3>
 
 	</div>
     <script src="js/jquery-1.11.0.js"></script>
