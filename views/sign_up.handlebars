@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Study Buddies</title>	
+	<title>Sign up</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -24,27 +24,24 @@
 
 <body>
 	<div class="container">
-		<h1>Welcome to study buddies</h1>
+		<h1>Sign Up</h1>
 		<ul class="nav nav-tabs">
  		<li class="active"><a href="#">Home</a></li>
   		<li><a href="#">Profile</a></li>
   		<li><a href="#">Messages</a></li>
 		</ul>
-
-		<!-- sign in -->
-		<div class="row">
-  			<div class="col-md-4">
-			<form class="form-signin" role="form">
-        	<h2 class="form-signin-heading">Please sign in</h2>
-        	<input type="email" class="form-control" placeholder="Email address" required autofocus>
-        	<input type="password" class="form-control" placeholder="Password" required>
-        	<label class="checkbox">
-          	<input type="checkbox" value="remember-me"> Remember me
-        	</label>
-        	<a href="/sign_up">Create new account</a>
-        	<button class="btn btn-lg btn-primary btn-block" type="submit" formaction="/home">Sign in</button>
-      		</form>
-      		</div>
+		<div class="login">
+		<form class="form-signin" role="form">
+          <h2 class="form-signin-heading">Please sign in</h2>
+          <input type="text" class="form-control" placeholder="Name" required autofocus>
+          <input type="email" class="form-control" placeholder="Email address" required autofocus>
+          <input type="password" class="form-control" placeholder="Password" required>
+           <input type="password" class="form-control" placeholder="Confirm Password" required>
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" formaction="/home">Submit</button>
+    	</form>
 		</div>
 	</div>
 </body>
