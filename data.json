@@ -1,34 +1,29 @@
 {
-	"users": [
+	"courses": [
 		{
-			"name": "Doug Engelbart",
-			"password": "Has awesome pet mice",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Douglas_Engelbart_in_2008.jpg/972px-Douglas_Engelbart_in_2008.jpg"			
+			"name": "CS 108",
+			"description": "Object-Oriented Systems Design",
+			"units" : "3-4"
 		},
 		{
-			"name": "Ivan Sutherland",
-			"description": "Great at sketching",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/5/5c/Ivan_Sutherland_at_CHM.jpg"			
+			"name": "CS 109",
+			"description": "Introduction to Probability for Computer Scientists",
+			"units" : "3-5"
 		},
 		{
-			"name": "JCR Licklider",
-			"description": "Uses big words like 'symbiosis'",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/6/66/J._C._R._Licklider.jpg"			
+			"name": "CS 147",
+			"description": "Introduction to Human-Computer Interaction Design",
+			"units" : "3-4"	
 		},
 		{
-			"name": "Vannevar Bush",
-			"description": "Has stellar associative memory",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/e/ea/Vannevar_Bush_portrait.jpg"			
+			"name": "ECON 1A",
+			"description": "Introductory Economics A",
+			"units" : "5"
 		},
 		{
-			"name": "Alan C. Kay",
-			"description": "In love with his laptop",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/7/76/Alan_Kay_%283097597186%29.jpg"
-		},
-		{
-			"name": "Allen Newell",
-			"description": "Really into psychology",
-			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
+			"name": "MATH 51",
+			"description": "Linear Algebra and Differential Calculus of Several Variables",
+			"units": "5"
 		}
 	]
 }
