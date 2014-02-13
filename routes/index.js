@@ -3,7 +3,14 @@
 
 
 	var db = require("../db")
-	db.insertUser("Poopy face");
+	// db.insertUser("Queef");
+
+	// var users = db.getUsers();
+	// console.log("returneDDDD " + users);
+	db.getUsers();
+	db.getUsers = function(req,res) {
+    	console.log(res);
+	}
 	
 };
 

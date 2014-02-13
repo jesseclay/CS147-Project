@@ -19,13 +19,38 @@ module.exports = {
 		userSchema = mongoose.Schema({
     		name: String
 		})
-		User = mongoose.model('User', userSchema);
+		
+		User = mongoose.model('User', userSchema)
+		//need to make a callback for this model
+		//user
   	},
 
   	insertUser: function (string) {
 		var newUser = new User({ name: string });
-		console.log(newUser.name); 
-  	}	
+		newUser.save(function (err, fluffy) {
+			if (err) console.log("error saving");//handle the error
+		});
+		console.log("before save " + newUser.name);
+		// console.log(newUser.name);
+		User.find(function (err, users) {
+			if (err) {
+				console.log('error');
+			}
+			console.log(users);
+		})
+  	},
+
+  	getUsers: function () {
+		User.find(function (err, users) {
+			if (err) {
+				console.log('error');
+			}
+			if(users) {
+				console.log(users);
+				return users;
+			}
+		})
+  	}
 
 }
 
