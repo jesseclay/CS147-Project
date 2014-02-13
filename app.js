@@ -8,12 +8,24 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 
+
+
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/test');
+
+// var uristring =
+// process.env.MONGOLAB_URI ||
+// process.env.MONGOHQ_URL ||
+// 'mongodb://localhost/HelloMongoose';
+
 var index = require('./routes/index');
 var home = require('./routes/home');
 var course_setup = require('./routes/course_setup');
 var sign_up = require('./routes/sign_up');
 var messages = require('./routes/messages');
 var map = require('./routes/map');
+
+
 
 // Example route
 // var user = require('./routes/user');
@@ -35,10 +47,16 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+
+//init database and schemas
+require('./db').createConnection();
+
 
 // Add routes here
 app.get('/', index.view);
@@ -48,8 +66,14 @@ app.get('/course_add', course_setup.add);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
+// app.get('/db', db.createConnection());
+
 // Example route
 // app.get('/users', user.list);
+
+
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
