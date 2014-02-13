@@ -17,13 +17,13 @@ function initializePage() {
 			valueElement.css("visibility","visible");
 		}
 		else if($(this).find('.extraInfo').size()!=0){
-			$(this).find('.extraInfo').css("display","inline-block");
+			$(this).find('.extraInfo').css("display","default");
 			valueElement.css("visibility","hidden");
 		}
 		else{
 			var group = $(this).data();
 			var infoHTML = "<div class='extraInfo'>Time: " + group.starttime + " - " + 
-			group.endtime + "</div>" + 
+			group.endtime + "</div>" +  
 			"<div class='extraInfo'>Location: " + group.location + "</div>";
 			valueElement.css("visibility","hidden");
 			$(this).append(infoHTML);
