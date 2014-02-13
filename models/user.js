@@ -46,4 +46,9 @@ exports.validateLogin = function(req, res) {
 	}, email);
 }
 
+exports.logout = function(req, res) {
+	req.session.destroy();
+	res.render('index');
+};
+
 

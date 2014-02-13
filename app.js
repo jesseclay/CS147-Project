@@ -69,6 +69,7 @@ app.get('/messages', messages.view);
 app.get('/map', map.view);
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
+app.get('/logout', user.logout);
 
 
 // Example route
