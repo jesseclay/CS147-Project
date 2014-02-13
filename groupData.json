@@ -1,0 +1,32 @@
+{
+	"groups": [
+		{
+			"id": "group1",
+			"name": "Assigment 4",
+			"startTime": "8:00 PM",
+			"endTime": "10:00 PM",
+			"location" : "Old Union"
+		},
+		{
+			"id": "group2",
+			"name": "Study Session for Midterm",
+			"startTime": "12:00 PM",
+			"endTime": "2:00 PM",
+			"location" : "Old Union"
+		},
+		{
+			"id": "group3",
+			"name": "Assignment 5",
+			"startTime": "6:00 PM",
+			"endTime": "8:00 PM",
+			"location" : "Old Union"
+		},
+		{
+			"id": "group4",
+			"name": "Assignment 4",
+			"startTime": "7:00 PM",
+			"endTime": "11:00 PM",
+			"location" : "Green Library"
+		}
+	]
+}
