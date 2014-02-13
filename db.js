@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
+var db;
 var userSchema;
 var User;
+var groupSchema;
+var group;
 
-var db;
+
 
 
 module.exports = {
@@ -17,40 +20,70 @@ module.exports = {
 
 		//INIT SCHEMAS
 		userSchema = mongoose.Schema({
-    		name: String
+    		name: String,
+    		email: String,
+    		password: String
 		})
 		
 		User = mongoose.model('User', userSchema)
+
+		groupSchema = mongoose.Schema({
+    		classname: String,
+    		assignment: String,
+    		start_time: String,
+    		end_time: String,
+		})
+		
+		Group = mongoose.model('Group', groupSchema)
 		//need to make a callback for this model
 		//user
   	},
 
-  	insertUser: function (string) {
-		var newUser = new User({ name: string });
+  	insertUser: function (name, email, password) {
+  		console.log(name);
+  		console.log(email);
+  		console.log(password);
+		var newUser = new User({ name: name, email: email, password: password});
 		newUser.save(function (err, fluffy) {
 			if (err) console.log("error saving");//handle the error
 		});
-		console.log("before save " + newUser.name);
-		// console.log(newUser.name);
-		User.find(function (err, users) {
-			if (err) {
-				console.log('error');
-			}
-			console.log(users);
-		})
+		console.log("before save " + newUser);
   	},
 
-  	getUsers: function () {
+
+  	createGroup: function (classname, assignment, start_time, end_time) {
+  
+		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time});
+		newUser.save(function (err, fluffy) {
+			if (err) console.log("error saving");//handle the error
+		});
+		console.log("before save " + newGroup);
+  	},
+
+  	getUsers: function (callback) {
+  		console.log('hit');
 		User.find(function (err, users) {
 			if (err) {
 				console.log('error');
 			}
 			if(users) {
-				console.log(users);
-				return users;
+				callback(users);
 			}
 		})
+  	},
+
+
+  	getUser: function (callback, email) {
+  		console.log('hit');
+  		User.findOne({email: email}, function(err, user) {
+  			if (err) {
+				console.log('error');
+			}
+			callback(user);
+		});
   	}
+
+
 
 }
 
