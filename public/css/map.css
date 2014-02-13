@@ -1,0 +1,52 @@
+.orderLabel{
+	display: inline-block;
+}
+
+.active, .active h4, .active h5{
+	color: white;
+}
+
+h4, h5{
+	/*font-weight: bold;*/
+	font-weight: normal;
+}
+
+h3, h4, h5{
+	color: black;
+}
+
+.list-group-item{
+	text-align: left;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+.heading-text-container{
+	display: inline-block;
+}
+
+.spacer{
+	width: 10px;
+	display: inline-block;
+}
+
+.nameContainer{
+	width: 150px;
+	white-space: nowrap;
+}
+
+.valueContainer{
+	width: 100px;
+	white-space: nowrap;
+	text-align: right;
+}
+
+.title{
+	display: inline;
+}
+
+.createButton{
+	float: right;
+}
