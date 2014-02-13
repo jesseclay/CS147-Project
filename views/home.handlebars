@@ -20,27 +20,9 @@
 </head>
 
 <body>
-	<div class="container">
-		<ul class="nav nav-tabs">
- 		<li class="active"><a href="#">Home</a>
-  		<li><a href="/course_setup">Manage Courses</a></li>
-  		<li><a href="/messages">Messages</a></li>
-		</ul>
+	{{> navbar this}}
 
-		<h3>My Classes</h3>
-
-		{{#each courses}}
-			<form id="courseform" role="form">
-			  	<input type="hidden" name="name" value="{{name}}">
-				<button type="submit" class="btn btn-default btn-lg btn-block courseButton" formaction="/map">
-					<h4>{{name}}: </h4>
-					<h5>{{description}}</h5>
-					<h6>Units: {{units}}</h6>
-				</button>
-		   </form>
-		{{/each}}
-
-	</div>
+	{{> myclasses this}}
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
