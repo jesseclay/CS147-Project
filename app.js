@@ -24,8 +24,8 @@ var course_setup = require('./routes/course_setup');
 var sign_up = require('./routes/sign_up');
 var messages = require('./routes/messages');
 var map = require('./routes/map');
+var post_group = require('./routes/post_group');
 var user = require('./models/user');
-
 
 
 // Example route
@@ -67,10 +67,15 @@ app.get('/course_add', course_setup.add);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
+<<<<<<< HEAD
+app.get('/post_group', post_group.view);
+app.get('/post_group_add', post_group.add);
+=======
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
 app.get('/logout', user.logout);
 
+>>>>>>> b583b62b7cf017aacdf00ed50d43fb1f13bc066a
 
 // Example route
 // app.get('/users', user.list);
