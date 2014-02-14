@@ -8,6 +8,16 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 
+
+
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/test');
+
+// var uristring =
+// process.env.MONGOLAB_URI ||
+// process.env.MONGOHQ_URL ||
+// 'mongodb://localhost/HelloMongoose';
+
 var index = require('./routes/index');
 var home = require('./routes/home');
 var course_setup = require('./routes/course_setup');
@@ -15,6 +25,8 @@ var sign_up = require('./routes/sign_up');
 var messages = require('./routes/messages');
 var map = require('./routes/map');
 var post_group = require('./routes/post_group');
+var user = require('./models/user');
+
 
 // Example route
 // var user = require('./routes/user');
@@ -36,10 +48,16 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+
+//init database and schemas
+require('./db').createConnection();
+
 
 // Add routes here
 app.get('/', index.view);
@@ -49,11 +67,22 @@ app.get('/course_add', course_setup.add);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
+<<<<<<< HEAD
 app.get('/post_group', post_group.view);
 app.get('/post_group_add', post_group.add);
+=======
+app.get('/create_new_user', user.addUser);
+app.get('/login', user.validateLogin);
+app.get('/logout', user.logout);
+
+>>>>>>> b583b62b7cf017aacdf00ed50d43fb1f13bc066a
 
 // Example route
 // app.get('/users', user.list);
+
+
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

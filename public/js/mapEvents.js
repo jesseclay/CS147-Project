@@ -3,10 +3,11 @@ $(document).ready(function() {
 })
 
 function initializePage() {
-	$(".dropdown-menu li a").click(function(){
-		$(".btn:first-child").text($(this).text()+ " ");
-		$(".btn:first-child").append("<span class='caret'></span>");
-      	$(".btn:first-child").val($(this).text());
+	$(".dropdown-menu li a").click(function(e){
+		e.preventDefault();
+		$("#dropdownFilter:first-child").text($(this).text()+ " ");
+		$("#dropdownFilter:first-child").append("<span class='caret'></span>");
+      	$("#dropdownFilter:first-child").val($(this).text());
 	});
 
 	$(".list-group-item").unbind("click").bind("click", function(e){

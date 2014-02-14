@@ -1,0 +1,30 @@
+{
+	"users": [
+		{
+			"id": "0",
+			"name": "Tim Santos",
+			"username": "timsants",
+			"password" : "3-4"
+		},
+		{
+			"name": "CS 109",
+			"description": "Introduction to Probability for Computer Scientists",
+			"units" : "3-5"
+		},
+		{
+			"name": "CS 147",
+			"description": "Introduction to Human-Computer Interaction Design",
+			"units" : "3-4"	
+		},
+		{
+			"name": "ECON 1A",
+			"description": "Introductory Economics A",
+			"units" : "5"
+		},
+		{
+			"name": "MATH 51",
+			"description": "Linear Algebra and Differential Calculus of Several Variables",
+			"units": "5"
+		}
+	]
+}
