@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+//mongoose.connect('mongodb://localhost/test');
+mongoose.connect(MONGOHQ_URL);
+
 var db;
 var userSchema;
 var User;
