@@ -20,23 +20,32 @@
 </head>
 
 <body>
+  <div class="navbar navbar-inverse navbar-fixed-top container">
+    <div class="navbar-header">
+      <a class="navbar-brand">StudyNow</a>
+    </div>
   
-	<div class="container">
-		<h1>Welcome to study buddies</h1>
-		<!-- sign in -->
-		<div class="row">
-  			<div class="col-md-4">
-			<form class="form-signin" role="form" method="get" action="/login">
-        	<h2 class="form-signin-heading">Please sign in</h2>
-        	<input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-        	<input type="password" name="password" class="form-control" placeholder="Password" required>
-        	<a href="/sign_up">Create new account</a>
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  		</form>
-      <h3>{{error}}</h3>
-    		</div>
+    <!-- sign in -->
+	<div class="row" >
+    <div class="col-md-4">
+      <div class="wrap">
+        <!--<p class="form-title">Sign In</p>-->
+		    <form class="login" role="form" method="get" action="/home">
+        <input type="text" name="email" placeholder="Email" required autofocus/>
+        <input type="password" name="password" placeholder="Password" required/>
+        <input type="submit" value="Sign In" class="btn btn-success btn-sm"/>
+
+        </form>
+        <!--<h3>{{error}}</h3>-->
+        <form class="register" action="/sign_up">
+        <input type="submit" value="Register" class="btn  btn-sm"/>
+          <!--<a href="/sign_up">Register</a>-->
+        </form formaction = "/sign_up">
+    	</div>
 		</div>
-	</div>
+  </div>
+  </div>
+	
   
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
