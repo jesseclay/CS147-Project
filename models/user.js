@@ -10,7 +10,7 @@ exports.addUser = function(req, res) {
 		db.insertUser(name, email, password);
         req.session.email = email;
 		req.session.name = name;
-        res.render('home');
+        res.redirect('home');
 };
 
 exports.getUser = function(req, res) {

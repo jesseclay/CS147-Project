@@ -36,7 +36,7 @@ form
 {
     width: 250px;
     margin: 0 auto;
-    margin-top: 16px;
+    margin-top: 13%;
 }
 
 form.login input[type="text"], form.login input[type="password"], form.login input[type="email"]
@@ -78,11 +78,6 @@ form.register
 {
 	width: 200px;
 	margin: 0 auto;
-}
-
-#register
-{
-    margin-top: 32px;
 }
 
 .register input[type="submit"]

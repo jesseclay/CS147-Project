@@ -1,12 +1,14 @@
 var mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/test');
+//if pushing to heroku. else
 mongoose.connect(process.env.MONGOHQ_URL);
+
 
 var db;
 var userSchema;
 var User;
 var groupSchema;
-var group;
+var Group;
 
 
 
@@ -32,8 +34,10 @@ module.exports = {
 		groupSchema = mongoose.Schema({
     		classname: String,
     		assignment: String,
-    		start_time: String,
-    		end_time: String,
+    		startTime: String,
+    		endTime: String,
+    		location: String,
+    		id: String
 		})
 		
 		Group = mongoose.model('Group', groupSchema)
@@ -53,13 +57,25 @@ module.exports = {
   	},
 
 
-  	createGroup: function (classname, assignment, start_time, end_time) {
+  	createGroup: function (classname, assignment, start_time, end_time, location, id) {
   
-		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time});
-		newUser.save(function (err, fluffy) {
+		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time, location: location, id: id});
+		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
 		console.log("before save " + newGroup);
+  	},
+
+  	getGroup: function (callback) {
+  		console.log('hit');
+		Group.find(function (err, groups) {
+			if (err) {
+				console.log('error');
+			}
+			if(groups) {
+				callback(groups);
+			}
+		})
   	},
 
   	getUsers: function (callback) {
