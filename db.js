@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
-<<<<<<< HEAD
 //if pushing to heroku. else
 //mongoose.connect(process.env.MONGOHQ_URL);
 
