@@ -3,7 +3,7 @@
 		{
 			"id": "group1",
 			"classname": "CS108",
-			"assignment": "Assignment 4",
+			"name": "Assignment 4",
 			"startTime": "3:00 PM",
 			"endTime": "5:00 PM",
 			"location" : "Old Union"
@@ -11,7 +11,7 @@
 		{
 			"id": "group2",
 			"classname": "CS108",
-			"assignment": "Study Session for Midterm",
+			"name": "Study Session for Midterm",
 			"startTime": "6:00 PM",
 			"endTime": "8:00 PM",
 			"location" : "Old Union"
@@ -19,7 +19,7 @@
 		{
 			"id": "group3",
 			"classname": "CS108",
-			"assignment": "Pre-section work",
+			"name": "Pre-section work",
 			"startTime": "7:00 PM",
 			"endTime": "11:00 PM",
 			"location" : "Green Library"
@@ -27,7 +27,7 @@
 		{
 			"id": "group4",
 			"classname": "CS108",
-			"assignment": "Assignment 5",
+			"name": "Assignment 5",
 			"startTime": "8:00 PM",
 			"endTime": "10:00 PM",
 			"location" : "Old Union"

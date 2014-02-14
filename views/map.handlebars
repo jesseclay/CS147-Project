@@ -28,10 +28,10 @@
 
 		<div>
       <h2 class="title">{{title}}</h2>
-      <form id="postGroup" role="form">
-      <input type="hidden" name="classname" value="{{title}}">
-      <a href="/post_group"><button type="button" class="btn btn-default createButton">New Group</button></a>
-      </form>
+     <!--  <form id="postGroup" role="form">
+        <input type="hidden" name="classname" value="{{title}}"> -->
+        <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-default createButton" id="createGroup" data.classname = "{{title}}">New Group</button></a>
+     <!--  </form> -->
     </div>
     <br>
     <p class="orderLabel"> Order by: </p>
@@ -51,9 +51,9 @@
 
   	<div class="list-group">
       {{#each data.groups}}
-        <a class="list-group-item" id="{{id}}" data-name="{{classname}}" data-startTime="{{startTime}}" data-endTime="{{endTime}}" data-location="{{location}}">
+        <a class="list-group-item" id="{{id}}" data-name="{{name}}" data-startTime="{{startTime}}" data-endTime="{{endTime}}" data-location="{{location}}">
           <div class = "heading-text-container nameContainer">
-            <h4 class="list-group-item-text">{{assignment}}</h4>
+            <h4 class="list-group-item-text">{{name}}</h4>
           </div>
           <div class="spacer"> </div>
           <div class = "heading-text-container valueContainer">
