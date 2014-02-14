@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test');
 //if pushing to heroku. else
-mongoose.connect(process.env.MONGOHQ_URL);
+//mongoose.connect(process.env.MONGOHQ_URL);
 
 
 var db;
@@ -33,7 +33,7 @@ module.exports = {
 
 		groupSchema = mongoose.Schema({
     		classname: String,
-    		assignment: String,
+    		name: String,
     		startTime: String,
     		endTime: String,
     		location: String,
@@ -57,9 +57,9 @@ module.exports = {
   	},
 
 
-  	createGroup: function (classname, assignment, start_time, end_time, location, id) {
+  	createGroup: function (classname, name, start_time, end_time, location, id) {
   
-		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time, location: location, id: id});
+		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, id: id});
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
@@ -69,6 +69,17 @@ module.exports = {
   	getGroup: function (callback) {
   		console.log('hit');
 		Group.find(function (err, groups) {
+			if (err) {
+				console.log('error');
+			}
+			if(groups) {
+				callback(groups);
+			}
+		})
+  	},
+
+  	getGroups: function (callback, classname) {
+		Group.find({classname: classname}, function (err, groups) {
 			if (err) {
 				console.log('error');
 			}

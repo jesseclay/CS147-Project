@@ -1,28 +1,35 @@
 exports.addGroup = function(req, res) {
-        var classname = "CS108";
-        var assignment = req.query.name;
+        var classname = req.query.classname;
+        var name = req.query.groupname;
         var start_time = "11:00am";
         var end_time = "12:00pm";
         var location = req.query.location;
         var salt = Math.floor((Math.random()*1000)+1);
-        var id = (classname+assignment+start_time+end_time+location+salt).hashCode();
+        var id = (classname+name+start_time+end_time+location+salt).hashCode();
 
         console.log(classname);
-  		console.log(assignment);
-  		console.log(start_time);
+  		  console.log(name);
+  		  console.log(start_time);
         console.log(end_time);
         console.log(location);
         console.log(id);
 
         //add new user by calling the model
         var db = require("../db")
-		db.createGroup(classname, assignment, start_time, end_time, location, id);
-        res.render('home');
+		db.createGroup(classname, name, start_time, end_time, location, id);
+        db.getGroup(function (groups) {
+            if(groups) {
+                console.log("check" + groups);
+                res.render('map', {
+                'title' : classname,
+                'data' : groups
+                });
+            }
+        }, classname);
 };
 
 exports.getGroup = function(req, res) {
     var db = require("../db")
-    // db.insertUser("Queef");
     db.getGroup(function (group) {
         if(group) {
             console.log("returned: " + group);

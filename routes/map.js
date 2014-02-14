@@ -1,18 +1,19 @@
 var data = require('../groupData.json');
 
 exports.view = function(req, res){
+	var classname = req.query.name;
 	var db = require("../db")
-    // db.insertUser("Queef");
-    db.getGroup(function (group) {
-        if(group) {
-            console.log("returned: " + group);
+
+    db.getGroup(function (groups) {
+    	if(groups) {
+    		console.log("check" + groups);
+			res.render('map', {
+			'title' : classname,
+			'data' : groups
+			});
         }
-    });
+    }, classname);
 
     
-
-	res.render('map', {
-		'title' : req.query.name,
-		'data' : data
-	});
+  
 };
