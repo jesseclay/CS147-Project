@@ -21,7 +21,8 @@
 		<div class="post_group">
 		<form class="form-signin" role="form" method="get" action="/post_group_add">
           <h2 class="form-signin-heading">Group Info</h2>
-          <input type="text" class="form-control" placeholder="Description" name="name" required autofocus>
+          <input type="hidden" name="classname" value="{{title}}">
+          <input type="text" class="form-control" placeholder="Description" name="groupname" required autofocus>
           <!--
           <input type="datetime" class="form-control" placeholder="Start Time" required autofocus>
 
