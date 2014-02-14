@@ -2,29 +2,32 @@
 	"groups": [
 		{
 			"id": "group1",
-			"class": "CS108",
-			"name": "Assignment 4",
+			"classname": "CS108",
+			"assignment": "Assignment 4",
 			"startTime": "3:00 PM",
 			"endTime": "5:00 PM",
 			"location" : "Old Union"
 		},
 		{
 			"id": "group2",
-			"name": "Study Session for Midterm",
+			"classname": "CS108",
+			"assignment": "Study Session for Midterm",
 			"startTime": "6:00 PM",
 			"endTime": "8:00 PM",
 			"location" : "Old Union"
 		},
 		{
 			"id": "group3",
-			"name": "Assignment 4",
+			"classname": "CS108",
+			"assignment": "Pre-section work",
 			"startTime": "7:00 PM",
 			"endTime": "11:00 PM",
 			"location" : "Green Library"
 		},
 		{
 			"id": "group4",
-			"name": "Assigment 5",
+			"classname": "CS108",
+			"assignment": "Assignment 5",
 			"startTime": "8:00 PM",
 			"endTime": "10:00 PM",
 			"location" : "Old Union"

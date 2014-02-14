@@ -7,12 +7,12 @@ exports.view = function(req, res){
 exports.add = function(req,res){
 	var newgroup = 
 		{
-			"name": req.query.name,
+			"assignment": req.query.name,
 			"location": req.query.location,
 			"id": "newgroup",
 			"startTime": "6:00 PM",
 			"endTime": "8:00 PM"
 		}
 	data["groups"].unshift(newgroup);
-	res.render('home');
+	res.redirect('home');
 };

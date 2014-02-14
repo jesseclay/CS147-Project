@@ -26,7 +26,7 @@ var messages = require('./routes/messages');
 var map = require('./routes/map');
 var post_group = require('./routes/post_group');
 var user = require('./models/user');
-
+var group = require('./models/group');
 
 // Example route
 // var user = require('./routes/user');
@@ -69,6 +69,7 @@ app.get('/messages', messages.view);
 app.get('/map', map.view);
 app.get('/post_group', post_group.view);
 app.get('/post_group_add', post_group.add);
+//app.get('/post_group_add', group.addGroup);
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
 app.get('/logout', user.logout);

@@ -34,8 +34,8 @@ module.exports = {
 		groupSchema = mongoose.Schema({
     		classname: String,
     		assignment: String,
-    		start_time: String,
-    		end_time: String,
+    		startTime: String,
+    		endTime: String,
     		location: String,
     		id: String
 		})
@@ -60,7 +60,7 @@ module.exports = {
   	createGroup: function (classname, assignment, start_time, end_time, location, id) {
   
 		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time, location: location, id: id});
-		newUser.save(function (err, group) {
+		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
 		console.log("before save " + newGroup);

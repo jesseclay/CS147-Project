@@ -1,11 +1,11 @@
 exports.addGroup = function(req, res) {
-        var classname = req.query.classname;
-        var assignment = req.query.assignment;
-        var start_time = req.query.start_time;
-        var end_time = req.query.end_time;
+        var classname = "CS108";
+        var assignment = req.query.name;
+        var start_time = "11:00am";
+        var end_time = "12:00pm";
         var location = req.query.location;
         var salt = Math.floor((Math.random()*1000)+1);
-        var id = String.hashCode(classname+assignment+start_time+end_time+location+salt);
+        var id = (classname+assignment+start_time+end_time+location+salt).hashCode();
 
         console.log(classname);
   		console.log(assignment);
