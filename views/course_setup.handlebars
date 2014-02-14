@@ -10,6 +10,7 @@
     <link href="css/course_setup.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <link href="css/general.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" media="all" href="style.css">
 
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -25,20 +26,15 @@
 </head>
 
 <body>
-	<div class="container">
-		<ul class="nav nav-tabs">
- 		<li> <a href="/home">Home</a></li>
-  		<li class="active"><a href="#">Manage Courses</a></li>
-      <li><a href="/messages">Messages</a></li>
-		</ul>
+	{{> navbar this}}
 
 		<!-- add new course -->
 		
   		<div class="col-sm-4">
 			<form class="form-addcourse" role="form" method="get" action="/course_add">
-        	<h2 class="form-signin-heading">Search and Add</h2>
+        	
         	<input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS 147" name="name" required autofocus>
-        	<button class="btn btn-sm btn-primary btn-block" id="add" type="submit">+</button>
+        	<button class="btn btn-lg btn-primary btn-block" id="add" type="submit">+</button>
       </form>
       </div>
     
@@ -54,5 +50,6 @@
     </div>
 		
 	</div>
+  <script src="js/hci-friends.js"></script>
 </body>
 </html>

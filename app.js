@@ -14,6 +14,7 @@ var course_setup = require('./routes/course_setup');
 var sign_up = require('./routes/sign_up');
 var messages = require('./routes/messages');
 var map = require('./routes/map');
+var post_group = require('./routes/post_group');
 
 // Example route
 // var user = require('./routes/user');
@@ -48,6 +49,9 @@ app.get('/course_add', course_setup.add);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
+app.get('/post_group', post_group.view);
+app.get('/post_group_add', post_group.add);
+
 // Example route
 // app.get('/users', user.list);
 

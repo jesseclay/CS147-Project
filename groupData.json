@@ -2,6 +2,7 @@
 	"groups": [
 		{
 			"id": "group1",
+			"class": "CS108",
 			"name": "Assignment 4",
 			"startTime": "3:00 PM",
 			"endTime": "5:00 PM",
