@@ -27,6 +27,7 @@ var map = require('./routes/map');
 var post_group = require('./routes/post_group');
 var user = require('./models/user');
 var group = require('./models/group');
+var viewMap = require('./routes/viewMap');
 
 // Example route
 // var user = require('./routes/user');
@@ -67,6 +68,7 @@ app.get('/course_add', course_setup.add);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
+app.get('/viewMap', viewMap.view);
 
 
 app.get('/post_group', post_group.view);
