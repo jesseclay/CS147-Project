@@ -16,16 +16,24 @@ exports.addGroup = function(req, res) {
 
         //add new user by calling the model
         var db = require("../db")
-		db.createGroup(classname, name, start_time, end_time, location, id);
-        db.getGroup(function (groups) {
-            if(groups) {
-                console.log("check" + groups);
-                res.render('map', {
-                'title' : classname,
-                'data' : groups
-                });
+		db.createGroup(function (response) {
+            if (response) {
+
+                res.redirect("/map?name=" + classname);
+
             }
-        }, classname);
+
+        }, classname, name, start_time, end_time, location, id);
+        
+        // db.getGroup(function (groups) {
+        //     if(groups) {
+        //         console.log("check" + groups);
+        //         res.render('map', {
+        //         'title' : classname,
+        //         'data' : groups
+        //         });
+        //     }
+        // }, classname);
 };
 
 exports.getGroup = function(req, res) {

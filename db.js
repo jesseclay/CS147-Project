@@ -57,18 +57,19 @@ module.exports = {
   	},
 
 
-  	createGroup: function (classname, name, start_time, end_time, location, id) {
+  	createGroup: function (callback, classname, name, start_time, end_time, location, id) {
   
 		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, id: id});
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
 		console.log("before save " + newGroup);
+		callback("success");
   	},
 
-  	getGroup: function (callback) {
+  	getGroup: function (callback, classname) {
   		console.log('hit');
-		Group.find(function (err, groups) {
+		Group.find({classname: classname}, function (err, groups) {
 			if (err) {
 				console.log('error');
 			}
