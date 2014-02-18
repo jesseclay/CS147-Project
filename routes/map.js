@@ -6,7 +6,7 @@ exports.view = function(req, res){
 	console.log("classname: " + classname);
     db.getGroup(function (groups) {
     	if(groups) {
-    		console.log("bissshh" + groups);
+    		console.log("bissshh id: " + req.session.userid);
 			res.render('map', {
 			'title' : classname,
 			'data' : groups

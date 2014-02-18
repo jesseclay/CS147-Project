@@ -4,15 +4,15 @@ exports.addGroup = function(req, res) {
         var start_time = "11:00am";
         var end_time = "12:00pm";
         var location = req.query.location;
-        var salt = Math.floor((Math.random()*1000)+1);
-        var id = (classname+name+start_time+end_time+location+salt).hashCode();
-
+        // var salt = Math.floor((Math.random()*1000)+1);
+        // var id = (classname+name+start_time+end_time+location+salt).hashCode();
+        var creatorid = req.session.userid;
         console.log(classname);
-  		  console.log(name);
-  		  console.log(start_time);
+  		console.log(name);
+  		console.log(start_time);
         console.log(end_time);
         console.log(location);
-        console.log(id);
+        console.log(creatorid);
 
         //add new user by calling the model
         var db = require("../db")
@@ -23,17 +23,7 @@ exports.addGroup = function(req, res) {
 
             }
 
-        }, classname, name, start_time, end_time, location, id);
-        
-        // db.getGroup(function (groups) {
-        //     if(groups) {
-        //         console.log("check" + groups);
-        //         res.render('map', {
-        //         'title' : classname,
-        //         'data' : groups
-        //         });
-        //     }
-        // }, classname);
+        }, classname, name, start_time, end_time, location, creatorid);
 };
 
 exports.getGroup = function(req, res) {

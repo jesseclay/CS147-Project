@@ -9,6 +9,8 @@ var userSchema;
 var User;
 var groupSchema;
 var Group;
+var classSchema;
+var Class;
 
 
 
@@ -23,6 +25,8 @@ module.exports = {
 		});
 
 		//INIT SCHEMAS
+
+		//USER
 		userSchema = mongoose.Schema({
     		name: String,
     		email: String,
@@ -31,21 +35,28 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
+		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
     		name: String,
     		startTime: String,
     		endTime: String,
     		location: String,
-    		id: String
+    		creatorid: String
 		})
-		
+
 		Group = mongoose.model('Group', groupSchema)
-		//need to make a callback for this model
-		//user
+		
+		//CLASS
+		classSchema = mongoose.Schema({
+			classname: String,
+			userids : [{userid : Number}]
+		})
+
+		Class = mongoose.model('Class', classSchema);
   	},
 
-  	insertUser: function (name, email, password) {
+  	insertUser: function (callback, name, email, password) {
   		console.log(name);
   		console.log(email);
   		console.log(password);
@@ -54,12 +65,36 @@ module.exports = {
 			if (err) console.log("error saving");//handle the error
 		});
 		console.log("before save " + newUser);
+		callback(newUser._id);
   	},
 
 
-  	createGroup: function (callback, classname, name, start_time, end_time, location, id) {
+  	getClass: function (callback, classname) {
+  		console.log('hit');
+		Class.find({classname: classname}, function (err, Class) {
+			if (err) {
+				console.log('error');
+			}
+			if(Class) {
+				callback(Class);
+			}
+		})
+  	},
+
+  	createClass: function (callback, classname, userid) {
   
-		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, id: id});
+		var newClass = new Class({classname: classname, userids : [{userid : userid}]});
+		newClass.save(function (err, group) {
+			if (err) console.log("error saving");//handle the error
+		});
+		console.log("before save " + newClass);
+		callback("success");
+  	},
+
+
+  	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
+  
+		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
