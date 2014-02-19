@@ -1,15 +1,15 @@
 div{
-	font-variant: small-caps;
+	/*font-variant: small-caps;*/
 	text-overflow:ellipsis;
 }
 
 p{
-	font-variant: small-caps;
+	/*font-variant: small-caps;*/
 	text-overflow:ellipsis;
 }
 
 h1, h2, h3, h4, h5 {
-	color: #660033;
+	color: #ffffff;
 	text-overflow: ellipsis;
 	overflow-x: hidden;
 }
@@ -17,5 +17,5 @@ h1, h2, h3, h4, h5 {
 body{
 	background-color:#C9FFB3;
 	padding-top: 70px;
-	/*background-image:url('/blur/7.jpg');*/
+	background-image:url('/blur/7.jpg');
 }

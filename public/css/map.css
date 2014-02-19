@@ -12,7 +12,11 @@ h4, h5{
 }
 
 h3, h4, h5{
-	color: black;
+	color: white;
+}
+
+p{
+	color:white;
 }
 
 .list-group-item{
