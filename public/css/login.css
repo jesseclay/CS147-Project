@@ -1,5 +1,4 @@
 
-
 body
 {
     background: url('/blur/7.jpg') fixed;
@@ -25,6 +24,7 @@ p.form-title
     font-weight: 600;
     font-style: italic;
     text-align: center;
+
     color: #FFFFFF;
     margin-top: 20%;
     text-transform: uppercase;
@@ -44,6 +44,7 @@ form.login input[type="text"], form.login input[type="password"], form.login inp
     width: 100%;
     margin: 0;
     padding: 5px 10px;
+    padding-bottom: 5px;
     background: 0;
     border: 0;
     border-bottom: 1px solid #FFFFFF;
@@ -93,6 +94,18 @@ form.register
     background-color: #12334A;
     float: bottom;
     transition: background-color 0.4s ease;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
 }
 
 /*.pr-wrap
