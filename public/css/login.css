@@ -74,6 +74,11 @@ form input[type="submit"]:hover
     transition: background-color 0.5s ease;
 }
 
+#add
+{
+	margin: 0 auto;
+}
+
 form.register
 {
 	width: 200px;
