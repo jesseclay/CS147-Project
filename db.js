@@ -71,9 +71,11 @@ module.exports = {
 
   	getClass: function (callback, classname) {
   		console.log('hit');
-		Class.find({classname: classname}, function (err, Class) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+		Class.find({classname: changedClassname}, function (err, Class) {
+			console.log("class get: " + Class)
 			if (err) {
-				console.log('error');
+				callback('none');
 			}
 			if(Class) {
 				callback(Class);
@@ -82,8 +84,8 @@ module.exports = {
   	},
 
   	createClass: function (callback, classname, userid) {
-  
-		var newClass = new Class({classname: classname, userids : [{userid : userid}]});
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+		var newClass = new Class({classname: cahngedClassname, userids : [{userid : userid}]});
 		newClass.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
