@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>Study Buddies</title>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/general.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+    
+
+</head>
+
+<body class="cbp-spmenu-push cbp-spmenu-push-toleft">
+    <div class="navbar navbar-inverse navbar-fixed-top container">
+        <div class="navbar-header">
+            <a class="navbar-brand">StudyNow</a>
+            <section class="buttonset cbp-spmenu-open">
+                <!-- Class "cbp-spmenu-open" gets applied to    menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-   push-toright" to the body -->
+            <button type="button" class="btn btn-md" id="showRightPush">
+            <span class="glyphicon glyphicon-tasks"></span>
+            </button>
+            </section>
+        </div>
+        <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+            <h3 class="cbp-spmenu-open" id="closeRightPush">MyName?</h3>
+            <a href="/my_groups">My Groups</a>
+            <a href="/course_setup">Course Setup</a>
+            <a href="/messages">Messages</a>
+            <a href="#">Settings?</a>
+            <a href="/logout">Logout</a>
+        </nav>
+
+    </div>
+    <div class="container">
+        <div class="main">
+
+            <div class="list-group">
+            {{#each data}}
+                <a class="list-group-item" id="{{id}}" data-name="{{name}}" data-startTime="{{startTime}}" data-endTime="{{endTime}}" data-location="{{location}}">
+                <div class = "heading-text-container nameContainer">
+                <h4 class="list-group-item-text">{{name}}</h4>
+                <h4 class="list-group-item-text">{{classname}}</h4>
+                </div>
+                <div class="spacer"> </div>
+                <div class = "heading-text-container valueContainer">
+                <h5 class="list-group-item-text">{{location}}</h5>
+                </div>
+                </a> 
+                <button type="button" class="btn btn-default" id="leave" groupid="{{_id}}">
+                  Leave Group
+                </button>
+              {{/each}}
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/hci-friends.js"></script>
+    <script src="js/pushMenu.js"></script>
+    
+</body>
+</html>

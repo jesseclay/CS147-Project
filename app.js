@@ -29,6 +29,7 @@ var user = require('./models/user');
 var group = require('./models/group');
 var classmodel = require('./models/class');
 var viewMap = require('./routes/viewMap');
+var myGroups = require('./routes/my_groups');
 
 // Example route
 // var user = require('./routes/user');
@@ -79,11 +80,14 @@ app.get('/post_group', post_group.view);
 
 //app.get('/post_group_add', post_group.add);
 app.get('/post_group_add', group.addGroup);
+app.get('/join_group/:groupid', group.joinGroup);
+app.get('/leave_group/:groupid', group.leaveGroup);
 
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
 app.get('/logout', user.logout);
 app.get('/deleteclass/:classname', classmodel.removeClass);
+app.get('/mygroups', myGroups.view);
 
 // Example route
 // app.get('/users', user.list);

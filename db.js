@@ -156,6 +156,34 @@ module.exports = {
 		callback("success");
   	},
 
+  	joinGroup: function (callback, groupid, userid) {
+  		var conditions = { _id: groupid };
+  		var update = { $addToSet: { memberids:userid }};
+  		var options = { multi: true };
+  		Group.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("sucess!! :)");
+  			}
+  		});
+  	},
+
+  	leaveGroup: function (callback, groupid, userid) {
+  		console.log("groupid"+groupid);
+  		console.log("userid"+userid);
+  		var conditions = { _id: groupid };
+  		var update = { $pull: { memberids:userid }};
+  		var options = { multi: true };
+  		Group.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("user removed");
+  			}
+  		});
+  	},
+
   	getGroup: function (callback, classname) {
   		console.log('hit');
 		Group.find({classname: classname}, function (err, groups) {
@@ -170,6 +198,17 @@ module.exports = {
 
   	getGroups: function (callback, classname) {
 		Group.find({classname: classname}, function (err, groups) {
+			if (err) {
+				console.log('error');
+			}
+			if(groups) {
+				callback(groups);
+			}
+		})
+  	},
+
+  	getMyGroups: function (callback, userid) {
+		Group.find({memberids: userid}, function (err, groups) {
 			if (err) {
 				console.log('error');
 			}

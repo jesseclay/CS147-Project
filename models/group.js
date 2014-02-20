@@ -35,6 +35,30 @@ exports.getGroup = function(req, res) {
     });
 };
 
+exports.joinGroup = function(req, res) {
+    var db = require("../db")
+    var userid = req.session.userid;
+    var groupid = req.params.groupid;   
+    db.joinGroup(function (response) {
+        if(response) {
+            console.log("returned: " + response);
+             res.send('sucessfully joined');
+        }
+    }, groupid, userid);
+};
+
+exports.leaveGroup = function(req, res) {
+    var db = require("../db")
+    var userid = req.session.userid;
+    var groupid = req.params.groupid; 
+    db.leaveGroup(function (response) {
+        if(response) {
+            console.log("returned: " + response);
+            res.send('sucessfully left group');
+        }
+    }, groupid, userid);
+};
+
 
 String.prototype.hashCode = function(){
     var hash = 0, i, char;
