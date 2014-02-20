@@ -37,7 +37,8 @@ exports.validateLogin = function(req, res) {
 			{
 				req.session.email = email;
 				req.session.name = user['name'];
-				console.log("here " + req.session.email);
+				req.session.userid = user['_id'];
+				console.log("userid " + req.session.userid);
 				res.redirect('home');
 			} else {
 				res.render('index', {'error':' Invalid username and password'});

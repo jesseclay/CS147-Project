@@ -50,7 +50,7 @@ module.exports = {
 		//CLASS
 		classSchema = mongoose.Schema({
 			classname: String,
-			userids : [{userid : Number}]
+			userids : [mongoose.Schema.Types.ObjectId]
 		})
 
 		Class = mongoose.model('Class', classSchema);
@@ -62,16 +62,17 @@ module.exports = {
   		console.log(password);
 		var newUser = new User({ name: name, email: email, password: password});
 		newUser.save(function (err, fluffy) {
-			if (err) console.log("error saving");//handle the error
+			if (err) console.log(err);//handle the error
+			callback(newUser._id);
 		});
 		console.log("before save " + newUser);
-		callback(newUser._id);
+		
   	},
 
 
   	getClass: function (callback, classname) {
-  		console.log('hit');
   		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+		console.log('hit get class: ' + changedClassname);
 		Class.find({classname: changedClassname}, function (err, Class) {
 			console.log("class get: " + Class)
 			if (err) {
@@ -79,18 +80,53 @@ module.exports = {
 			}
 			if(Class) {
 				callback(Class);
+			} else {
+				callback("");
 			}
-		})
+		});
   	},
 
   	createClass: function (callback, classname, userid) {
+  		console.log('userid: ' + userid);
   		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
-		var newClass = new Class({classname: cahngedClassname, userids : [{userid : userid}]});
+		var newClass = new Class;
+		newClass.classname = changedClassname;
+		newClass.userids = [userid];
+		({classname: changedClassname, userids : userid});
 		newClass.save(function (err, group) {
-			if (err) console.log("error saving");//handle the error
+			if (err) {
+				console.log(err);//handle the error
+			} else {
+				callback("success");
+			}	
 		});
-		console.log("before save " + newClass);
-		callback("success");
+		console.log("hit create class save " + newClass);
+		
+  	},
+
+  	updateClass: function (callback, classname, userid) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+  		var conditions = { classname: changedClassname };
+  		var update = { $addToSet: { userids:userid }};
+  		var options = { multi: true };
+  		Class.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("sucess!! :)");
+  			}
+  		});
+  	},
+
+  	getUserClasses: function (callback, userid) {
+		Class.find({'userids': userid}, function (err, classObject) {
+			if (err) {
+				callback('error');
+			}
+			if(Class) {
+				callback(classObject);
+			}
+		});
   	},
 
 
