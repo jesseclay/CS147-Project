@@ -42,7 +42,8 @@ module.exports = {
     		startTime: String,
     		endTime: String,
     		location: String,
-    		creatorid: String
+    		creatorid: String,
+    		memberids : [mongoose.Schema.Types.ObjectId]
 		})
 
 		Group = mongoose.model('Group', groupSchema)
@@ -133,6 +134,7 @@ module.exports = {
   	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
   
 		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
+		newGroup.memberids = [creatorid]
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
