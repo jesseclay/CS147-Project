@@ -1,9 +1,8 @@
 
-
 body
 {
     background: url('/blur/7.jpg') fixed;
-    background-size: cover;
+    /*background-size: cover;*/
     margin: 0;
 }
 
@@ -25,6 +24,7 @@ p.form-title
     font-weight: 600;
     font-style: italic;
     text-align: center;
+
     color: #FFFFFF;
     margin-top: 20%;
     text-transform: uppercase;
@@ -44,6 +44,7 @@ form.login input[type="text"], form.login input[type="password"], form.login inp
     width: 100%;
     margin: 0;
     padding: 5px 10px;
+    padding-bottom: 5px;
     background: 0;
     border: 0;
     border-bottom: 1px solid #FFFFFF;
@@ -74,6 +75,11 @@ form input[type="submit"]:hover
     transition: background-color 0.5s ease;
 }
 
+#add
+{
+	margin: 0 auto;
+}
+
 form.register
 {
 	width: 200px;
@@ -85,9 +91,34 @@ form.register
     font-size: 10px;
     font-weight: 400;
     color: #FFFFFF;
-    background-color: #12334A;
+    background-color: #2773be;
     float: bottom;
     transition: background-color 0.4s ease;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 50px;
+    padding: 10px 12px;
+    pointer-events: none;
 }
 
 /*.pr-wrap

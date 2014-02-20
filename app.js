@@ -27,6 +27,7 @@ var map = require('./routes/map');
 var post_group = require('./routes/post_group');
 var user = require('./models/user');
 var group = require('./models/group');
+var classmodel = require('./models/class');
 var viewMap = require('./routes/viewMap');
 
 // Example route
@@ -64,7 +65,10 @@ require('./db').createConnection();
 app.get('/', index.view);
 app.get('/home', home.view);
 app.get('/course_setup', course_setup.view);
-app.get('/course_add', course_setup.add);
+
+//app.get('/course_add', course_setup.add);
+
+app.get('/course_add', classmodel.addClass);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
@@ -72,12 +76,14 @@ app.get('/viewMap', viewMap.view);
 
 
 app.get('/post_group', post_group.view);
-app.get('/post_group_add', post_group.add);
 
+//app.get('/post_group_add', post_group.add);
+app.get('/post_group_add', group.addGroup);
 
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
 app.get('/logout', user.logout);
+app.get('/deleteclass/:classname', classmodel.removeClass);
 
 // Example route
 // app.get('/users', user.list);

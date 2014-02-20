@@ -6,11 +6,13 @@ exports.addUser = function(req, res) {
   		console.log(email);
   		console.log(password);
         //add new user by calling the model
-        var db = require("../db")
-		db.insertUser(name, email, password);
-        req.session.email = email;
-		req.session.name = name;
-        res.redirect('home');
+        var db = require("../db");
+		db.insertUser(function (userid) {
+        	req.session.email = email;
+			req.session.name = name;
+			req.session.userid = userid;
+        	res.redirect('home');
+        }, name, email, password);
 };
 
 exports.getUser = function(req, res) {
@@ -35,7 +37,8 @@ exports.validateLogin = function(req, res) {
 			{
 				req.session.email = email;
 				req.session.name = user['name'];
-				console.log("here " + req.session.email);
+				req.session.userid = user['_id'];
+				console.log("userid " + req.session.userid);
 				res.redirect('home');
 			} else {
 				res.render('index', {'error':' Invalid username and password'});

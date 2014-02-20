@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test');
 //if pushing to heroku. else
-mongoose.connect(process.env.MONGOHQ_URL);
+//mongoose.connect(process.env.MONGOHQ_URL);
 
 
 var db;
@@ -9,6 +9,8 @@ var userSchema;
 var User;
 var groupSchema;
 var Group;
+var classSchema;
+var Class;
 
 
 
@@ -23,6 +25,8 @@ module.exports = {
 		});
 
 		//INIT SCHEMAS
+
+		//USER
 		userSchema = mongoose.Schema({
     		name: String,
     		email: String,
@@ -31,44 +35,141 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
+		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
-    		assignment: String,
+    		name: String,
     		startTime: String,
     		endTime: String,
     		location: String,
-    		id: String
+    		creatorid: String,
+    		memberids : [mongoose.Schema.Types.ObjectId]
 		})
-		
+
 		Group = mongoose.model('Group', groupSchema)
-		//need to make a callback for this model
-		//user
+		
+		//CLASS
+		classSchema = mongoose.Schema({
+			classname: String,
+			userids : [mongoose.Schema.Types.ObjectId]
+		})
+
+		Class = mongoose.model('Class', classSchema);
   	},
 
-  	insertUser: function (name, email, password) {
+  	insertUser: function (callback, name, email, password) {
   		console.log(name);
   		console.log(email);
   		console.log(password);
 		var newUser = new User({ name: name, email: email, password: password});
 		newUser.save(function (err, fluffy) {
-			if (err) console.log("error saving");//handle the error
+			if (err) console.log(err);//handle the error
+			callback(newUser._id);
 		});
 		console.log("before save " + newUser);
+		
   	},
 
 
-  	createGroup: function (classname, assignment, start_time, end_time, location, id) {
+  	getClass: function (callback, classname) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+		console.log('hit get class: ' + changedClassname);
+		Class.find({classname: changedClassname}, function (err, Class) {
+			console.log("class get: " + Class)
+			if (err) {
+				callback('none');
+			}
+			if(Class) {
+				callback(Class);
+			} else {
+				callback("");
+			}
+		});
+  	},
+
+  	createClass: function (callback, classname, userid) {
+  		console.log('userid: ' + userid);
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+		var newClass = new Class;
+		newClass.classname = changedClassname;
+		newClass.userids = [userid];
+		({classname: changedClassname, userids : userid});
+		newClass.save(function (err, group) {
+			if (err) {
+				console.log(err);//handle the error
+			} else {
+				callback("success");
+			}	
+		});
+		console.log("hit create class save " + newClass);
+		
+  	},
+
+  	updateClass: function (callback, classname, userid) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+  		var conditions = { classname: changedClassname };
+  		var update = { $addToSet: { userids:userid }};
+  		var options = { multi: true };
+  		Class.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("sucess!! :)");
+  			}
+  		});
+  	},
+
+  	removeClass: function (callback, classname, userid) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+  		var conditions = { classname: changedClassname };
+  		var update = { $pull: { userids:userid }};
+  		var options = { multi: true };
+  		Class.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("user removed");
+  			}
+  		});
+  	},
+
+  	getUserClasses: function (callback, userid) {
+		Class.find({'userids': userid}, function (err, classObject) {
+			if (err) {
+				callback('error');
+			}
+			if(Class) {
+				callback(classObject);
+			}
+		});
+  	},
+
+
+  	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
   
-		var newGroup = new Group({ classname: classname, assignment: assignment, start_time: start_time, end_time: end_time, location: location, id: id});
+		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
+		newGroup.memberids = [creatorid]
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
 		console.log("before save " + newGroup);
+		callback("success");
   	},
 
-  	getGroup: function (callback) {
+  	getGroup: function (callback, classname) {
   		console.log('hit');
-		Group.find(function (err, groups) {
+		Group.find({classname: classname}, function (err, groups) {
+			if (err) {
+				console.log('error');
+			}
+			if(groups) {
+				callback(groups);
+			}
+		})
+  	},
+
+  	getGroups: function (callback, classname) {
+		Group.find({classname: classname}, function (err, groups) {
 			if (err) {
 				console.log('error');
 			}
