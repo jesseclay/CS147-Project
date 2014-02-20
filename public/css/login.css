@@ -2,7 +2,7 @@
 body
 {
     background: url('/blur/7.jpg') fixed;
-    background-size: cover;
+    /*background-size: cover;*/
     margin: 0;
 }
 
@@ -91,7 +91,7 @@ form.register
     font-size: 10px;
     font-weight: 400;
     color: #FFFFFF;
-    background-color: #12334A;
+    background-color: #2773be;
     float: bottom;
     transition: background-color 0.4s ease;
 }
@@ -104,6 +104,19 @@ form.register
 }
 .left-inner-addon i {
     position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 50px;
     padding: 10px 12px;
     pointer-events: none;
 }
