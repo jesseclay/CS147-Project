@@ -119,6 +119,20 @@ module.exports = {
   		});
   	},
 
+  	removeClass: function (callback, classname, userid) {
+  		var changedClassname = classname.toUpperCase().replace(/\s+/g, '');
+  		var conditions = { classname: changedClassname };
+  		var update = { $pull: { userids:userid }};
+  		var options = { multi: true };
+  		Class.update(conditions, update, options, function (err) {
+  			if(err) {
+  				callback(err);
+  			} else {
+  				callback("user removed");
+  			}
+  		});
+  	},
+
   	getUserClasses: function (callback, userid) {
 		Class.find({'userids': userid}, function (err, classObject) {
 			if (err) {

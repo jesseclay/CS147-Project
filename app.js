@@ -83,6 +83,7 @@ app.get('/post_group_add', group.addGroup);
 app.get('/create_new_user', user.addUser);
 app.get('/login', user.validateLogin);
 app.get('/logout', user.logout);
+app.get('/deleteclass/:classname', classmodel.removeClass);
 
 // Example route
 // app.get('/users', user.list);

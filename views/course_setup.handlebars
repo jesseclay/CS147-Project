@@ -55,8 +55,12 @@
     <div class="courselist">  
     {{#each courses}}
       <div class="row">
+       
         <button type="button" class="btn btn-default btn-sm btn-block courseButton">
-          <h4>{{name}}</h4>
+          <h4>{{classname}}</h4>
+        </button>
+        <button type="button" class="btn btn-default" id="delete{{classname}}" classname="{{classname}}">
+          Delete
         </button>
       </div>
     {{/each}}
@@ -67,5 +71,6 @@
   <script src="js/bootstrap.js"></script>
   <script src="js/hci-friends.js"></script>
   <script src="js/pushMenu.js"></script>
+  <script src="js/course_events.js"></script>
 </body>
 </html>

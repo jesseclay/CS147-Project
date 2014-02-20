@@ -1,9 +1,11 @@
+var course_setup = require('../routes/course_setup');
+
 exports.addClass = function(req, res) {
         //check if class is already there
         //if there, add userid to array $addToSet
         //if not make a new class
 
-        var classname = req.query.classname;
+        var classname = req.query.name;
         var userid = req.session.userid;
         console.log(classname);
   		console.log(userid);
@@ -18,7 +20,7 @@ exports.addClass = function(req, res) {
                 //create class
                 db.createClass(function (response) {
                     if (response) {
-                        res.redirect("/home" + classname);
+                         res.redirect("/course_setup");
                     }
                  }, classname, userid);
             } else { //class already in db
@@ -26,34 +28,36 @@ exports.addClass = function(req, res) {
                 db.updateClass(function (response) {
                     if (response) {
                         console.log(response)
+                        res.redirect("/course_setup");
                     }
                  }, classname, userid);
 
             }
         }, classname);
-
-		
 };
 
 exports.getClasses = function(req, res) {
-        //check if class is already there
-        //if there, add userid to array $addToSet
-        //if not make a new class
-
         var userid = req.session.userid;
         console.log(userid);
-
-
-        //add new user by calling the model
         var db = require("../db")
-
         db.getUserClasses(function (response) {
             if(response) {
                 console.log(response);
                 //create class
-            }
-                
-        }, userid);
-
-        
+            } 
+        }, userid);     
 };
+
+/* Removes user from this class */
+exports.removeClass = function(req, res) {
+    var userid = req.session.userid;
+    var classname = req.params.classname;   
+    var db = require("../db")
+    db.removeClass(function (response) {
+        if (response) {
+            console.log(response)
+            res.send('sucessfully removed');
+        }
+    }, classname, userid);    
+};
+
