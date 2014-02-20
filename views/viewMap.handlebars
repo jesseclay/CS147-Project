@@ -9,7 +9,7 @@
   <link href="css/bootstrap-theme.css" rel="stylesheet">
   <link href="css/general.css" rel="stylesheet">
   <link href="css/map.css" rel="stylesheet">
-
+  <link href="css/home.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -110,9 +110,29 @@
 
 </head>
 
-<body>
+<body class="cbp-spmenu-push cbp-spmenu-push-toleft">
+  <div class="navbar navbar-inverse navbar-fixed-top container">
+      <div class="navbar-header">
+          <a class="navbar-brand">StudyNow</a>
+      <section class="buttonset cbp-spmenu-open">
+              <!-- Class "cbp-spmenu-open" gets applied to  menu and "cbp-spmenu-push-toleft" or "cbp-spmenu- push-toright" to the body -->
+          <button type="button" class="btn btn-md" id="showRightPush">
+        <span class="glyphicon glyphicon-tasks"></span>
+      </button>
+        </section>
+      </div>
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+        <h3 class="cbp-spmenu-open" id="closeRightPush">MyName?</h3>
+        <a href="/home">Home</a>
+        <a href="#">My Groups</a>
+        <a href="/course_setup">Course Setup</a>
+        <a href="/messages">Messages</a>
+        <a href="#">Settings?</a>
+        <a href="/logout">Logout</a>
+    </nav>
 
-  {{> navbar this}}
+  </div>
+
   <div class="spacer"> </div>
 	<div class="backbuttons">
       <h3 class="title">{{title}}</h3 >
@@ -123,5 +143,6 @@
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
   <script src="js/mapEvents.js"></script>
+  <script src="js/pushMenu.js"></script>
 </body>
 </html>
