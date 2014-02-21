@@ -7,11 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/course_setup.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <link href="css/general.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" media="all" href="style.css">
     <link href="css/home.css" rel="stylesheet">
+    <link href="css/course_setup.css" rel="stylesheet">
         
 </head>
 
@@ -19,11 +19,12 @@
 	
   {{> navbar this}}
   
-  <div class="main">
+  <div class="container">
+    <div class="main">
 		<!-- add new course -->
 		
   		<div class="col-sm-6">
-			<form class="form-addcourse" role="form" method="get" action="/course_add">
+			<form class="form-addcourse" id="add_course" role="form" method="get" action="/course_add">
         <div class="right-inner-addon ">
           <i class="glyphicon glyphicon-search"></i>
           <input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS 147" name="name" required autofocus>
@@ -32,21 +33,20 @@
       </div>
     
     <!-- view current courses -->
+    <hr>
     
-    <div class="container">  
     {{#each courses}}
-      <div class="row">
-       
+  
         <div class="btn btn-default btn-sm btn-block courseButton">
-          <h4>{{classname}}</h4>
-          <button type="button" class="btn btn-default btn-md" id="delete{{classname}}" classname="{{classname}}">
+          <h4 id="setup_classname">{{classname}}</h4>
+          <button type="button" class="btn btn-default btn-md delete_button" id="delete{{classname}}" classname="{{classname}}">
           <span class="glyphicon glyphicon-remove-circle"></span>
           </button>
         </div>
-        
-      </div>
+           
     {{/each}}
     </div>
+  </div>
     
 	</div>
   <script src="js/jquery-1.11.0.js"></script>
