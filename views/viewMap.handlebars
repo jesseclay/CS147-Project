@@ -109,27 +109,8 @@
 </head>
 
 <body class="cbp-spmenu-push cbp-spmenu-push-toleft">
-  <div class="navbar navbar-inverse navbar-fixed-top container">
-      <div class="navbar-header">
-          <a class="navbar-brand">StudyNow</a>
-      <section class="buttonset cbp-spmenu-open">
-              <!-- Class "cbp-spmenu-open" gets applied to  menu and "cbp-spmenu-push-toleft" or "cbp-spmenu- push-toright" to the body -->
-          <button type="button" class="btn btn-md" id="showRightPush">
-        <span class="glyphicon glyphicon-tasks"></span>
-      </button>
-        </section>
-      </div>
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-        <h3 class="cbp-spmenu-open" id="closeRightPush">MyName?</h3>
-        <a href="/home">Home</a>
-        <a href="#">My Groups</a>
-        <a href="/course_setup">Course Setup</a>
-        <a href="/messages">Messages</a>
-        <a href="#">Settings?</a>
-        <a href="/logout">Logout</a>
-    </nav>
 
-  </div>
+  {{> navbar this}}
 
   <div class="spacer"> </div>
 	<div class="backbuttons">

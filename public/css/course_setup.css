@@ -11,3 +11,8 @@
 .courselist {
 	margin-top: 10px;
 }
+
+.coursebutton 
+{
+	display: inline-block;
+}
