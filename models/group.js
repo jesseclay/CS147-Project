@@ -7,8 +7,6 @@ exports.addGroup = function(req, res) {
         var creatorid = req.session.userid;
         var classname = req.query.classname;
         var name = req.query.groupname;
-        var start_time = start_time;
-        var end_time = end_time;
         var location = req.query.location;
         var db = require("../db")
 		db.createGroup(function (response) {
@@ -20,31 +18,34 @@ exports.addGroup = function(req, res) {
 
 
 function getDateTimeObject(time, date) {
-    console.log("TIME PASSED IN: " +  time);
-    var timeComponents = time.replace(/\s.*$/, '').split(':');
-    var pattern = new RegExp("(\\d?\\d):(\\d\\d)(am|pm)", 'i');
-    // var pattern = new RegExp("\\d", "i");
-    console.log("TEST: " + pattern.test(time));
-    console.log("pattern: " + pattern.toString());
-    // if(pattern.test(time)) {
-        var suffix = pattern.exec(time);
-        console.log("suffix: " + suffix);
-    // }
-    console.log(timeComponents[0]);
-    console.log(timeComponents[1]);
-    var dateComponents = date.split('/');
+    var pattern = new RegExp("(\\d?\\d):(\\d\\d)(am|pm)", "i");
+    var timeComponents = "";
+    if(pattern.test(time)) {
+        timeComponents = pattern.exec(time);
+    }
+    var hour = parseInt(timeComponents[1]);
+    var minutes = timeComponents[2];
+    var ampm = timeComponents[3];
+    if(ampm === "pm" && hour != 12) {
+        hour = hour + 12;
+    }
+    if(ampm === "am" && hour === 12) {
+        hour = 0;
+    }
+    var dateComponents = date.split("/");
     var month = dateComponents[0];
-    var date = dateComponents[1];
+    var day = dateComponents[1];
     var year = dateComponents[2];
-    var date = new Date();
-    date.setDate(date);
-    date.setMonth(month);
-    date.setFullYear(year);
+
+    var newDate=new Date();
+    newDate.setDate(day);
+    newDate.setMonth(month - 1);
+    newDate.setFullYear(year);
     // var hour = convertToUTCHours(timeComponents[0]);
-    var hour = timeComponents[0]
-    date.setHours(hour);
-    date.setMinutes(timeComponents[1]);
-    return date;
+    newDate.setHours(hour);
+    newDate.setMinutes(minutes);
+    newDate.setSeconds(0);
+    return newDate;
 }
 
 
