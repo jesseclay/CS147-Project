@@ -11,3 +11,36 @@
 .courselist {
 	margin-top: 10px;
 }
+
+.glyphicon-remove-circle
+{
+	color: #c62f32;
+}
+
+#setup_classname
+{
+	display: inline-table;
+}
+
+#add_course
+{
+	margin-top: 10px;
+}
+
+.delete_button
+{
+	float: right;
+	display: inline-flex;
+	margin-right: 5px;
+}
+
+.courseButton:hover{
+	background-color: rgba(235,235,235,0.25);
+}
+
+.coursebutton,span
+{
+	font-size: 18px;
+	vertical-align:middle;
+}
+

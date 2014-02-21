@@ -15,8 +15,41 @@ h1, h2, h3, h4, h5 {
 }
 
 body{
-	background-color:#C9FFB3;
-	padding-top: 70px;
 	background-image:url('/blur/7.jpg');
+	background-color:#A6BACA;
+	padding-top: 70px;
 	vertical-align: middle;
+}
+
+.backButtonLink{
+	color: buttonface;
+	background-color: transparent;
+	font-size: 16px;
+	display: inline-block;
+	padding: 3px 10px 7px 5px;
+	margin: 2px 8px 7px 8px;
+	display: none;
+	text-decoration:none;
+}
+
+.backButtonLink:hover, .backButtonLink:active, .backButtonLink:focus{
+	color: white;
+	background-color: transparent;
+	font-size: 16px;
+	display: inline-block;
+	padding: 3px 10px 7px 5px;
+	margin: 2px 8px 7px 8px;
+	display: none;
+	text-decoration:none;
+}
+
+.navbar-brand{
+	float: none;
+	display: inline-block;
+}
+
+#showRightPush{
+	color: white;
+	background-color: transparent;
+	box-shadow: none;
 }
