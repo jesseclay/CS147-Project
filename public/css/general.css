@@ -29,6 +29,7 @@ body{
 	padding: 3px 10px 7px 5px;
 	margin: 2px 8px 7px 8px;
 	display: none;
+	text-decoration:none;
 }
 
 .backButtonLink:hover, .backButtonLink:active, .backButtonLink:focus{
@@ -39,9 +40,16 @@ body{
 	padding: 3px 10px 7px 5px;
 	margin: 2px 8px 7px 8px;
 	display: none;
+	text-decoration:none;
 }
 
 .navbar-brand{
 	float: none;
 	display: inline-block;
+}
+
+#showRightPush{
+	color: white;
+	background-color: transparent;
+	box-shadow: none;
 }

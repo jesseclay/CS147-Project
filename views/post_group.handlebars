@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body class="cbp-spmenu-push cbp-spmenu-push-toleft">
 	
 	{{> navbar this}}
 	
@@ -27,22 +27,23 @@
 			<input type="hidden" name="classname" value="{{title}}">
 			<input type="text" class="form-control" id="descript" placeholder="Description" name="groupname" required autofocus>
           
-			<input type="text" class="form-control date start" placeholder="Start Date" name="start_date" required autofocus>
+			<input type="text" class="form-control date start" placeholder="Start Date" name="start_date" required>
 
-			<input type="text" class="form-control time start" placeholder="Start Time" name="start_time" required autofocus>
+			<input type="text" class="form-control time start" placeholder="Start Time" name="start_time" required>
 
-			<input type="text" class="form-control date end" placeholder="End Date" name="end_date" required autofocus>
+			<input type="text" class="form-control date end" placeholder="End Date" name="end_date" required>
 
-			<input type="text" class="form-control time end" placeholder="End Time" name="end_time" required autofocus>
+			<input type="text" class="form-control time end" placeholder="End Time" name="end_time" required>
 
-			<input type="text" class="form-control" placeholder="Location" name="location" required autofocus>
+			<input type="text" class="form-control" placeholder="Location" name="location" required>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
     	</form>
 		</div>
 
 	</div>
-
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="timepicker/jquery.timepicker.js"></script>
 	<script type="text/javascript" src="datepicker/jquery.datepair.js"></script>
@@ -64,8 +65,7 @@
 	    $('.form-signin').datepair();
 	    $('.ui-timepicker-wrapper').css('width', $('#descript').outerWidth()+"px");
 	</script>
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/bootstrap.js"></script>
+	
 	<script src="js/hci-friends.js"></script>
 	<script src="js/pushMenu.js"></script>
 

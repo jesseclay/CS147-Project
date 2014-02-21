@@ -26,17 +26,6 @@
         position:static;
         height:45px;
       }
-      .backbuttons{
-        position: absolute;
-        top: 50px;
-        left: 10%;
-        /* margin-left: -180px;*/
-        z-index: 5;
-        background-color: transparent;
-        opacity: 1;
-        padding: 5px;
-        width: 180px;
-      }
       #map-canvas { height: 100%; width: 100% }
     </style>
 
@@ -114,10 +103,6 @@
   {{> navbar this}}
 
   <div class="spacer"> </div>
-	<div class="backbuttons">
-      <h3 class="title">{{title}}</h3 >
-      <a href="/map?name={{title}}"><button type="button" class="btn btn-default createButton" data.classname = "{{title}}">View List</button></a>  
-  </div>
   <div id="map-canvas"/> 
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
