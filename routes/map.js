@@ -74,20 +74,28 @@ function replaceTimes(groups) {
 
 
 function putInTimeFormat(dateObject) {
-	var hour = dateObject.getHours();
+	var hour = parseInt(dateObject.getHours());
 	var minutes = dateObject.getMinutes().toString();
-	var time = hour + ":" + minutes;
-	if(minutes < 10) {
-		time = hour + ":" + minutes + "0";
+	var time = "";
+	var ampm = "am";
+	if(hour >= 12) {
+		ampm = "pm";
+		console.log("HITTTT");
+		console.log("hour: " + hour);
+		if(hour !== 12) {
+			hour = hour - 12;
+			console.log("HITTTT@@@@@: " + hour);
+		}
 	}
+	if(hour === 0) {
+		hour = 12;
+	}
+	if(minutes < 10) {
+		time = hour + ":" + minutes + "0" + ampm;
+	} else {
+		time = hour + ":" + minutes + ampm;
+	}
+	console.log(time);
 	return time;
 }
 
-// function convertToPSTHours(utcHourString) {
-//     var utcHour = parseInt(utcHourString);
-//     var pstHour = utcHour - 8;
-//     if(pstHour <= 0) {
-//         pstHour = 24 + pstHour;
-//     } 
-//     return pstHour;
-// }
