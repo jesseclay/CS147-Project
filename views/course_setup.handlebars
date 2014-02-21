@@ -12,32 +12,13 @@
     <link href="css/general.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" media="all" href="style.css">
     <link href="css/home.css" rel="stylesheet">
-	
         
 </head>
 
 <body class="cbp-spmenu-push cbp-spmenu-push-toleft">
-	<div class="navbar navbar-inverse navbar-fixed-top container">
-      <div class="navbar-header">
-          <a class="navbar-brand">StudyNow</a>
-      <section class="buttonset cbp-spmenu-open">
-              <!-- Class "cbp-spmenu-open" gets applied to  menu and "cbp-spmenu-push-toleft" or "cbp-spmenu- push-toright" to the body -->
-          <button type="button" class="btn btn-md" id="showRightPush">
-        <span class="glyphicon glyphicon-tasks"></span>
-      </button>
-        </section>
-      </div>
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-        <h3 class="cbp-spmenu-open" id="closeRightPush">MyName?</h3>
-        <a href="/home">Home</a>
-        <a href="#">My Groups</a>
-        <a href="/course_setup">Course Setup</a>
-        <a href="/messages">Messages</a>
-        <a href="#">Settings?</a>
-        <a href="/logout">Logout</a>
-    </nav>
-
-  </div>
+	
+  {{> navbar this}}
+  
   <div class="main">
 		<!-- add new course -->
 		
@@ -59,8 +40,7 @@
         <button type="button" class="btn btn-default btn-sm btn-block courseButton">
           <h4>{{classname}}</h4>
         </button>
-        <button type="button" class="btn btn-default" id="delete{{classname}}" classname="{{classname}}">
-          Delete
+        <button type="button" class="glyphicon glyphicon-remove-circle" id="delete{{classname}}" classname="{{classname}}">
         </button>
       </div>
     {{/each}}
