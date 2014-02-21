@@ -1,8 +1,9 @@
 exports.addGroup = function(req, res) {
-        var start_time = getDateTimeObject(req.query.start_time);
-        var end_time = getDateTimeObject(req.query.end_time);
-        console.log("DATE PARSED START: " + start_time);
-        console.log("DATE PARSED END: " + end_time);
+        console.log("start date" + req.query.start_date);
+        var start_time = getDateTimeObject(req.query.start_time, req.query.start_date);
+        var end_time = getDateTimeObject(req.query.end_time, req.query.end_date);
+        // console.log("DATE PARSED START: " + start_time);
+        // console.log("DATE PARSED END: " + end_time);
         var creatorid = req.session.userid;
         var classname = req.query.classname;
         var name = req.query.groupname;
@@ -18,9 +19,27 @@ exports.addGroup = function(req, res) {
 };
 
 
-function getDateTimeObject(time) {
+function getDateTimeObject(time, date) {
+    console.log("TIME PASSED IN: " +  time);
     var timeComponents = time.replace(/\s.*$/, '').split(':');
+    var pattern = new RegExp("(\\d?\\d):(\\d\\d)(am|pm)", 'i');
+    // var pattern = new RegExp("\\d", "i");
+    console.log("TEST: " + pattern.test(time));
+    console.log("pattern: " + pattern.toString());
+    // if(pattern.test(time)) {
+        var suffix = pattern.exec(time);
+        console.log("suffix: " + suffix);
+    // }
+    console.log(timeComponents[0]);
+    console.log(timeComponents[1]);
+    var dateComponents = date.split('/');
+    var month = dateComponents[0];
+    var date = dateComponents[1];
+    var year = dateComponents[2];
     var date = new Date();
+    date.setDate(date);
+    date.setMonth(month);
+    date.setFullYear(year);
     // var hour = convertToUTCHours(timeComponents[0]);
     var hour = timeComponents[0]
     date.setHours(hour);

@@ -54,9 +54,9 @@
     	Start Time <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu" role="menu">
-        <li><a href="map/{{title}}/sort_start">Start Time</a></li>
-        <li><a href="map/{{title}}/sort_end">End Time</a></li>
-        <li><a href="#">Location</a></li>
+        <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
+        <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
+        <!-- <li><a href="#">Location</a></li> -->
   		</ul>
   	</div>
     <a href="/viewMap?classname={{title}}"><button type="button" class="btn btn-default createButton" id="viewMap" data.classname = "{{title}}">View Map</button></a>
@@ -73,8 +73,6 @@
           <div class="spacer extraInfo"> </div>
           <div class = "heading-text-container valueContainer">
             <h5 class="list-group-item-text">{{location}}</h5>
-            <h5 class="list-group-item-text">{{startTime}}</h5>
-             <h5 class="list-group-item-text">{{endTime}}</h5>
           </div>
           <div class='extraInfo' style='display:none'>Time: {{startTime}}-{{endTime}}</div>
           <div class='extraInfo' style ='display:none'>Location: {{location}}</div>
@@ -92,8 +90,6 @@
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
-
-  <script src="js/group_events.js"></script>
   <script src="js/mapEvents.js"></script>
 
   <script src="js/pushMenu.js"></script>

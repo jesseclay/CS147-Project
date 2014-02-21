@@ -1,10 +1,16 @@
 exports.view = function(req, res){
 	var classname = req.query.name;
+	var sort = req.query.sort;
+	console.log("SORT: " + sort);
 	var db = require("../db")
 	console.log("classname: " + classname);
     db.getGroup(function (groups) {
     	if(groups) {
-    		groups = sortByStartTime(groups);
+    		if (sort === "sort_end") {
+    			groups = sortByEndTime(groups);
+    		} else {
+    			groups = sortByStartTime(groups);
+    		}
     		groups = replaceTimes(groups);
 			res.render('map', {
 			'title' : classname,
@@ -17,9 +23,7 @@ exports.view = function(req, res){
 exports.sort = function(req, res){
 	var classname = req.params.classname;
 	var sort = req.params.sort;
-	console.log("SORT: " + sort);
 	var db = require("../db")
-	console.log("classname: " + classname);
     db.getGroup(function (groups) {
     	if(groups) {
     		if(sort === "sort_start") {
@@ -65,7 +69,6 @@ function replaceTimes(groups) {
 		group.startTime = startTime;
 		group.endTime = endTime;
 	}
-	console.log(groups);
 	return groups;
 }
 

@@ -73,7 +73,7 @@ app.get('/course_add', classmodel.addClass);
 app.get('/sign_up', sign_up.view);
 app.get('/messages', messages.view);
 app.get('/map', map.view);
-app.get('/map/:classname/:sort', map.sort);
+app.get('/map/sort', map.view);
 app.get('/viewMap', viewMap.view);
 
 

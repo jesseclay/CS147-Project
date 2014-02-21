@@ -8,6 +8,7 @@ function initializePage() {
 		$("#dropdownFilter:first-child").text($(this).text()+ " ");
 		$("#dropdownFilter:first-child").append("<span class='caret'></span>");
       	$("#dropdownFilter:first-child").val($(this).text());
+      	window.location.href = $(this).attr("href");
 	});
 
 	$(".list-group-item").unbind("click").bind("click", function(e){
