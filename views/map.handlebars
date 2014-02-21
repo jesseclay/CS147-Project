@@ -70,11 +70,15 @@
           <div class = "heading-text-container nameContainer container{{_id}}">
             <h4 class="list-group-item-text">{{name}}</h4>
           </div>
-          <div class="spacer"> </div>
+          <div class="spacer extraInfo"> </div>
           <div class = "heading-text-container valueContainer">
             <h5 class="list-group-item-text">{{location}}</h5>
           </div>
-           <button type="button" class="btn btn-default" id="join{{_id}}"groupid="{{_id}}">
+          <div class='extraInfo' style='display:none'>Time: {{startTime}}-{{endTime}}</div>
+          <div class='extraInfo' style ='display:none'>Location: {{location}}</div>
+          <div class='extraInfo' style ='display:none; padding-bottom:10px'># of People: {{numMembers}}</div>
+          <!-- <hr class='extraInfo' style="display:none"> -->
+          <button type="button" class="btn btn-default extraInfo" style='display:none' id="join{{_id}}"groupid="{{_id}}">
           Join Group
         </button>
         </a> 
@@ -86,8 +90,10 @@
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
-  <script src="js/mapEvents.js"></script>
-  <script src="js/pushMenu.js"></script>
+
   <script src="js/group_events.js"></script>
+  <script src="js/mapEvents.js"></script>
+
+  <script src="js/pushMenu.js"></script>
 </body>
 </html>

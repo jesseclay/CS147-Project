@@ -1,5 +1,3 @@
-var data = require('../groupData.json');
-
 exports.view = function(req, res){
 	var classname = req.query.name;
 	var db = require("../db")

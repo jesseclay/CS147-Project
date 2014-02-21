@@ -43,7 +43,8 @@ module.exports = {
     		endTime: String,
     		location: String,
     		creatorid: String,
-    		memberids : [mongoose.Schema.Types.ObjectId]
+    		memberids : [mongoose.Schema.Types.ObjectId],
+    		numMembers: Number,
 		})
 
 		Group = mongoose.model('Group', groupSchema)
@@ -148,7 +149,8 @@ module.exports = {
   	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
   
 		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
-		newGroup.memberids = [creatorid]
+		newGroup.memberids = [creatorid];
+		newGroup.numMembers = 1;
 		newGroup.save(function (err, group) {
 			if (err) console.log("error saving");//handle the error
 		});
@@ -158,7 +160,7 @@ module.exports = {
 
   	joinGroup: function (callback, groupid, userid) {
   		var conditions = { _id: groupid };
-  		var update = { $addToSet: { memberids:userid }};
+  		var update = { $addToSet: { memberids:userid }, $inc: {numMembers:1}};
   		var options = { multi: true };
   		Group.update(conditions, update, options, function (err) {
   			if(err) {
@@ -173,7 +175,7 @@ module.exports = {
   		console.log("groupid"+groupid);
   		console.log("userid"+userid);
   		var conditions = { _id: groupid };
-  		var update = { $pull: { memberids:userid }};
+  		var update = { $pull: { memberids:userid }, $inc: {numMembers:-1}};
   		var options = { multi: true };
   		Group.update(conditions, update, options, function (err) {
   			if(err) {
