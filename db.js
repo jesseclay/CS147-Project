@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var database_uri = 'mongodb://localhost/test' || process.env.MONGOHQ_URL;
+var local_db_uri = 'mongodb://localhost/test';
+var database_uri = process.env.MONGOHQ_URL || local_db_uri;
 mongoose.connect(database_uri);
-//if pushing to heroku. else
 
 
 
