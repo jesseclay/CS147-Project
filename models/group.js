@@ -1,16 +1,13 @@
 exports.addGroup = function(req, res) {
-        var start_time = getDateTimeObject(req.query.start_time);
-        var end_time = getDateTimeObject(req.query.end_time);
-        console.log("DATE PARSED START: " + start_time);
-        console.log("DATE PARSED START: " + end_time);
+        console.log("start date" + req.query.start_date);
+        var start_time = getDateTimeObject(req.query.start_time, req.query.start_date);
+        var end_time = getDateTimeObject(req.query.end_time, req.query.end_date);
+        // console.log("DATE PARSED START: " + start_time);
+        // console.log("DATE PARSED END: " + end_time);
+        var creatorid = req.session.userid;
         var classname = req.query.classname;
         var name = req.query.groupname;
-        var start_time = start_time;
-        var end_time = end_time;
         var location = req.query.location;
-        // var salt = Math.floor((Math.random()*1000)+1);
-        // var id = (classname+name+start_time+end_time+location+salt).hashCode();
-        var creatorid = req.session.userid;
         var db = require("../db")
 		db.createGroup(function (response) {
             if (response) {
@@ -20,24 +17,46 @@ exports.addGroup = function(req, res) {
 };
 
 
-function getDateTimeObject(time) {
-    var timeComponents = time.replace(/\s.*$/, '').split(':');
-    var date = new Date();
-    var hour = convertToUTCHours(timeComponents[0]);
-    date.setHours(hour);
-    date.setMinutes(timeComponents[1]);
-    return date;
+function getDateTimeObject(time, date) {
+    var pattern = new RegExp("(\\d?\\d):(\\d\\d)(am|pm)", "i");
+    var timeComponents = "";
+    if(pattern.test(time)) {
+        timeComponents = pattern.exec(time);
+    }
+    var hour = parseInt(timeComponents[1]);
+    var minutes = timeComponents[2];
+    var ampm = timeComponents[3];
+    if(ampm === "pm" && hour != 12) {
+        hour = hour + 12;
+    }
+    if(ampm === "am" && hour === 12) {
+        hour = 0;
+    }
+    var dateComponents = date.split("/");
+    var month = dateComponents[0];
+    var day = dateComponents[1];
+    var year = dateComponents[2];
+
+    var newDate=new Date();
+    newDate.setDate(day);
+    newDate.setMonth(month - 1);
+    newDate.setFullYear(year);
+    // var hour = convertToUTCHours(timeComponents[0]);
+    newDate.setHours(hour);
+    newDate.setMinutes(minutes);
+    newDate.setSeconds(0);
+    return newDate;
 }
 
 
-function convertToUTCHours(pstHourString) {
-    var pstHour = parseInt(pstHourString);
-    var utcHour = pstHour + 8;
-    if(utcHour > 12) {
-        utcHour = utcHour - 12;
-    } 
-    return utcHour;
-}
+// function convertToUTCHours(pstHourString) {
+//     var pstHour = parseInt(pstHourString);
+//     var utcHour = pstHour + 8;
+//     if(utcHour > 23) {
+//         utcHour = utcHour - 24;
+//     } 
+//     return utcHour;
+// }
 
 exports.getGroup = function(req, res) {
     var db = require("../db")
