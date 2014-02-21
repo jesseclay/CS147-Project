@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+var database_uri = 'mongodb://localhost/test' || process.env.MONGOHQ_URL;
+mongoose.connect(database_uri);
 //if pushing to heroku. else
-//mongoose.connect(process.env.MONGOHQ_URL);
+
 
 
 var db;
@@ -35,6 +36,9 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
+		User.remove({}, function(err) { 
+   			console.log('collection removed') 
+		});
 		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
@@ -48,6 +52,10 @@ module.exports = {
 		})
 
 		Group = mongoose.model('Group', groupSchema)
+
+		Group.remove({}, function(err) { 
+   			console.log('collection removed') 
+		});
 		
 		//CLASS
 		classSchema = mongoose.Schema({
@@ -56,6 +64,10 @@ module.exports = {
 		})
 
 		Class = mongoose.model('Class', classSchema);
+
+		Class.remove({}, function(err) { 
+   			console.log('collection removed') 
+		});
   	},
 
   	insertUser: function (callback, name, email, password) {
