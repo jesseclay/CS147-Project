@@ -2,15 +2,13 @@ exports.addGroup = function(req, res) {
         var start_time = getDateTimeObject(req.query.start_time);
         var end_time = getDateTimeObject(req.query.end_time);
         console.log("DATE PARSED START: " + start_time);
-        console.log("DATE PARSED START: " + end_time);
+        console.log("DATE PARSED END: " + end_time);
+        var creatorid = req.session.userid;
         var classname = req.query.classname;
         var name = req.query.groupname;
         var start_time = start_time;
         var end_time = end_time;
         var location = req.query.location;
-        // var salt = Math.floor((Math.random()*1000)+1);
-        // var id = (classname+name+start_time+end_time+location+salt).hashCode();
-        var creatorid = req.session.userid;
         var db = require("../db")
 		db.createGroup(function (response) {
             if (response) {
@@ -23,21 +21,22 @@ exports.addGroup = function(req, res) {
 function getDateTimeObject(time) {
     var timeComponents = time.replace(/\s.*$/, '').split(':');
     var date = new Date();
-    var hour = convertToUTCHours(timeComponents[0]);
+    // var hour = convertToUTCHours(timeComponents[0]);
+    var hour = timeComponents[0]
     date.setHours(hour);
     date.setMinutes(timeComponents[1]);
     return date;
 }
 
 
-function convertToUTCHours(pstHourString) {
-    var pstHour = parseInt(pstHourString);
-    var utcHour = pstHour + 8;
-    if(utcHour > 12) {
-        utcHour = utcHour - 12;
-    } 
-    return utcHour;
-}
+// function convertToUTCHours(pstHourString) {
+//     var pstHour = parseInt(pstHourString);
+//     var utcHour = pstHour + 8;
+//     if(utcHour > 23) {
+//         utcHour = utcHour - 24;
+//     } 
+//     return utcHour;
+// }
 
 exports.getGroup = function(req, res) {
     var db = require("../db")
