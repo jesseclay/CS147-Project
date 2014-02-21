@@ -4,7 +4,8 @@ exports.view = function(req, res){
 	console.log("classname: " + classname);
     db.getGroup(function (groups) {
     	if(groups) {
-    		groups = sortAndReplaceGroups(groups);
+    		groups = sortByStartTime(groups);
+    		groups = replaceTimes(groups);
 			res.render('map', {
 			'title' : classname,
 			'data' : groups
@@ -13,17 +14,50 @@ exports.view = function(req, res){
     }, classname);
 };
 
+exports.sort = function(req, res){
+	var classname = req.params.classname;
+	var sort = req.params.sort;
+	console.log("SORT: " + sort);
+	var db = require("../db")
+	console.log("classname: " + classname);
+    db.getGroup(function (groups) {
+    	if(groups) {
+    		if(sort === "sort_start") {
+    			groups = sortByStartTime(groups);
+    		} else if (sort === "sort_end") {
+    			groups = sortByEndTime(groups);
+    		}
+    		groups = replaceTimes(groups);
+			res.render('map', {
+			'title' : classname,
+			'data' : groups
+			});
+        }
+    }, classname);
+};
 
-function sortAndReplaceGroups(groups) {
-	//first sort by time
+function sortByStartTime(groups) {
 	groups.sort(function (group1, group2) {
 		var dateObject1 = new Date(Date.parse(group1.startTime));
 		var dateObject2 = new Date(Date.parse(group2.startTime));
 		return dateObject1 - dateObject2;
 	});
+	return groups;
+}
+
+function sortByEndTime(groups) {
+	groups.sort(function (group1, group2) {
+		var dateObject1 = new Date(Date.parse(group1.endTime));
+		var dateObject2 = new Date(Date.parse(group2.endTime));
+		return dateObject1 - dateObject2;
+	});
+	return groups;
+}
+
+
+function replaceTimes(groups) {
 	for (var i = 0; i < groups.length; i++) {
 		var group = groups[i];
-		console.log("startTime: " + group.startTime);
 		var dateObjectStart = new Date(Date.parse(group.startTime));
 		var startTime = putInTimeFormat(dateObjectStart);
 		var dateObjectEnd = new Date(Date.parse(group.endTime));
@@ -38,15 +72,11 @@ function sortAndReplaceGroups(groups) {
 
 function putInTimeFormat(dateObject) {
 	var hour = dateObject.getHours();
-	// hour = convertToPSTHours(hour).toString();
-	console.log("hour: " + hour);
 	var minutes = dateObject.getMinutes().toString();
-	console.log("minutes: " + minutes);
 	var time = hour + ":" + minutes;
 	if(minutes < 10) {
 		time = hour + ":" + minutes + "0";
 	}
-	console.log("FINAL TIME: " + time);
 	return time;
 }
 
