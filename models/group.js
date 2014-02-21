@@ -1,30 +1,43 @@
 exports.addGroup = function(req, res) {
+        var start_time = getDateTimeObject(req.query.start_time);
+        var end_time = getDateTimeObject(req.query.end_time);
+        console.log("DATE PARSED START: " + start_time);
+        console.log("DATE PARSED START: " + end_time);
         var classname = req.query.classname;
         var name = req.query.groupname;
-        var start_time = "11:00am";
-        var end_time = "12:00pm";
+        var start_time = start_time;
+        var end_time = end_time;
         var location = req.query.location;
         // var salt = Math.floor((Math.random()*1000)+1);
         // var id = (classname+name+start_time+end_time+location+salt).hashCode();
         var creatorid = req.session.userid;
-        console.log(classname);
-  		console.log(name);
-  		console.log(start_time);
-        console.log(end_time);
-        console.log(location);
-        console.log(creatorid);
-
-        //add new user by calling the model
         var db = require("../db")
 		db.createGroup(function (response) {
             if (response) {
-
                 res.redirect("/map?name=" + classname);
-
             }
-
         }, classname, name, start_time, end_time, location, creatorid);
 };
+
+
+function getDateTimeObject(time) {
+    var timeComponents = time.replace(/\s.*$/, '').split(':');
+    var date = new Date();
+    var hour = convertToUTCHours(timeComponents[0]);
+    date.setHours(hour);
+    date.setMinutes(timeComponents[1]);
+    return date;
+}
+
+
+function convertToUTCHours(pstHourString) {
+    var pstHour = parseInt(pstHourString);
+    var utcHour = pstHour + 8;
+    if(utcHour > 12) {
+        utcHour = utcHour - 12;
+    } 
+    return utcHour;
+}
 
 exports.getGroup = function(req, res) {
     var db = require("../db")

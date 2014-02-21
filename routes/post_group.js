@@ -7,6 +7,8 @@ exports.view = function(req, res){
 };
 
 exports.add = function(req,res){
+	console.log("end!!!!!!: " + req.query.end_time);
+	console.log("start!!!!!: " + req.query.start_time);
 	var newgroup = 
 		{
 			"name": req.query.groupname,
