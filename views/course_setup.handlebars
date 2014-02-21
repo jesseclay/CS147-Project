@@ -33,15 +33,17 @@
     
     <!-- view current courses -->
     
-    <div class="courselist">  
+    <div class="container">  
     {{#each courses}}
       <div class="row">
        
-        <button type="button" class="btn btn-default btn-sm btn-block courseButton">
+        <div class="btn btn-default btn-sm btn-block courseButton">
           <h4>{{classname}}</h4>
-        </button>
-        <button type="button" class="glyphicon glyphicon-remove-circle" id="delete{{classname}}" classname="{{classname}}">
-        </button>
+          <button type="button" class="btn btn-default btn-md" id="delete{{classname}}" classname="{{classname}}">
+          <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </div>
+        
       </div>
     {{/each}}
     </div>
