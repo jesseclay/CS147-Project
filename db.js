@@ -36,9 +36,9 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
-		User.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// User.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
@@ -49,6 +49,7 @@ module.exports = {
     		creatorid: String,
     		memberids : [mongoose.Schema.Types.ObjectId],
     		numMembers: Number,
+    		belongsToGroup: Number
 		})
 
 		Group = mongoose.model('Group', groupSchema)
@@ -65,9 +66,9 @@ module.exports = {
 
 		Class = mongoose.model('Class', classSchema);
 
-		Class.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// Class.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
   	},
 
   	insertUser: function (callback, name, email, password) {

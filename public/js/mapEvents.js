@@ -28,6 +28,12 @@ function initializePage() {
 	});
 	$("[id^=join]").unbind("click").bind("click", joinGroup);
     $("[id^=leave]").unbind("click").bind("click", leaveGroup);
+
+
+    $.each($(".join-leave-btn"), function(index, value){
+       console.log($(value).attr("data-belongs"));
+	});
+
 }
 
 
