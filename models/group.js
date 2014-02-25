@@ -8,12 +8,15 @@ exports.addGroup = function(req, res) {
         var classname = req.query.classname;
         var name = req.query.groupname;
         var location = req.query.location;
+        var latitude = parseFloat(req.query.latitude);
+        var longitude = parseFloat(req.query.longitude);        
+
         var db = require("../db")
 		db.createGroup(function (response) {
             if (response) {
                 res.redirect("/map?name=" + classname);
             }
-        }, classname, name, start_time, end_time, location, creatorid);
+        }, classname, name, start_time, end_time, location, latitude, longitude, creatorid);
 };
 
 

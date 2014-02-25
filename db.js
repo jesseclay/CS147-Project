@@ -48,6 +48,8 @@ module.exports = {
     		startTime: String,
     		endTime: String,
     		location: String,
+    		latitude: Number,
+    		longitude: Number,
     		creatorid: String,
     		memberids : [mongoose.Schema.Types.ObjectId],
     		numMembers: Number,
@@ -181,9 +183,9 @@ module.exports = {
   	},
 
 
-  	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
+  	createGroup: function (callback, classname, name, start_time, end_time, location, latitude, longitude, creatorid) {
   
-		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
+		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, latitude: latitude, longitude: longitude, creatorid: creatorid});
 		newGroup.memberids = [creatorid];
 		newGroup.numMembers = 1;
 		newGroup.save(function (err, group) {
