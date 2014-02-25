@@ -1,0 +1,39 @@
+{
+	"places":[
+		{
+			"name": "Meyer Library",
+			"lat" : 37.4257729,
+			"lng" : -122.1676419
+		},
+		{
+			"name": "Green Library",
+			"lat" : 37.4261392,
+			"lng" : -122.1670659
+		},
+		{
+			"name": "Tresidder Memorial Union",
+			"lat" : 37.4246909,
+			"lng" : -122.1687722
+		},
+		{
+			"name": "Old Union",
+			"lat" : 37.4251203,
+			"lng" : -122.1703289
+		},
+		{
+			"name": "Tresidder Memorial Union",
+			"lat" : 37.4246909,
+			"lng" : -122.1687722
+		},
+		{
+			"name": "Tresidder Memorial Union",
+			"lat" : 37.4246909,
+			"lng" : -122.1687722
+		},
+		{
+			"name": "Tresidder Memorial Union",
+			"lat" : 37.4246909,
+			"lng" : -122.1687722
+		},
+	]
+}
