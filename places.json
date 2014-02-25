@@ -21,19 +21,374 @@
 			"lng" : -122.1703289
 		},
 		{
-			"name": "Tresidder Memorial Union",
-			"lat" : 37.4246909,
-			"lng" : -122.1687722
+			"name": "Okada",
+			"lat" : 37.423461,
+			"lng" : -122.162830
 		},
 		{
-			"name": "Tresidder Memorial Union",
-			"lat" : 37.4246909,
-			"lng" : -122.1687722
+			"name": "Junipero",
+			"lat" : 37.423514,
+			"lng" : -122.162389
 		},
 		{
-			"name": "Tresidder Memorial Union",
-			"lat" : 37.4246909,
-			"lng" : -122.1687722
+			"name": "Cedro",
+			"lat" : 37.424110,
+			"lng" : -122.162180
 		},
+		{
+			"name": "Arroyo",
+			"lat" : 37.424322, 
+			"lng" : -122.162515
+		},
+		{
+			"name": "Trancos",
+			"lat" : 37.424519, 
+			"lng" : -122.163441
+		},
+		{
+			"name": "Soto",
+			"lat" : 37.424475, 
+			"lng" : -122.163861
+		},
+		{
+			"name": "Rinconada",
+			"lat" : 37.423872, 
+			"lng" : -122.164081
+		},
+		{
+			"name": "Otero",
+			"lat" : 37.423640, 
+			"lng" : -122.163729
+		},
+		{
+			"name": "Kimball Hall",
+			"lat" : 37.425068, 
+			"lng" : -122.161872
+		},
+		{
+			"name": "Castano Hall",
+			"lat" : 37.425110,
+			"lng" : -122.160867
+		},
+		{
+			"name": "Lantana Hall",
+			"lat" : 37.425669, 
+			"lng" : -122.160683
+		},
+		{
+			"name": "Branner Hall",
+			"lat" : 37.425420,  
+			"lng" : -122.162901
+		},
+		{
+			"name": "Toyon Hall",
+			"lat" : 37.426056,  
+			"lng" : -122.163471
+		},
+		{
+			"name": "Crothers Memorial",
+			"lat" : 37.425856, 
+			"lng" : -122.164732
+		},
+		{
+			"name": "Crothers Hall",
+			"lat" : 37.426086,  
+			"lng" : -122.165641
+		},
+		{
+			"name": "Larkin North",
+			"lat" : 37.425106,  
+			"lng" : -122.165826
+		},
+		{
+			"name": "Larkin West",
+			"lat" : 37.424921,  
+			"lng" : -122.166089
+		},
+		{
+			"name": "Twain North",
+			"lat" : 37.424933, 
+			"lng" : -122.165131
+		},
+		{
+			"name": "Twain East",
+			"lat" : 37.424703,  
+			"lng" : -122.165038
+		},
+		{
+			"name": "Donnor",
+			"lat" : 37.424343, 
+			"lng" : -122.166269
+		},
+		{
+			"name": "Serra",
+			"lat" : 37.423981, 
+			"lng" : -122.166167
+		},
+		{
+			"name": "Burbank",
+			"lat" : 37.424120, 
+			"lng" : -122.165263
+		},
+		{
+			"name": "Casa Zapata",
+			"lat" : 37.4239888,
+			"lng" : -122.1654667
+		},
+		{
+			"name": "Muwekma-Tah-Ruk",
+			"lat" : 37.423443,
+			"lng" : -122.169039
+		},
+		{
+			"name": "Storey House",
+			"lat" : 37.423239, 
+			"lng" : -122.169709
+		},
+		{
+			"name": "Columbae",
+			"lat" : 37.423099, 
+			"lng" : -122.168753
+		},
+		{
+			"name": "Sigma Chi",
+			"lat" : 37.422868, 
+			"lng" : -122.169522
+		},
+		{
+			"name": "Mars",
+			"lat" : 37.422715, 
+			"lng" : -122.168607
+		},
+		{
+			"name": "Xanadu",
+			"lat" : 37.422245, 
+			"lng" : -122.169209
+		},
+		{
+			"name": "Sigma Nu",
+			"lat" : 37.422301, 
+			"lng" : -122.168387
+		},
+		{
+			"name": "La Casa Italiana",
+			"lat" : 37.421909, 
+			"lng" : -122.169130
+		},
+		{
+			"name": "BOB",
+			"lat" : 37.421515, 
+			"lng" : -122.168883
+		},
+		{
+			"name": "Theta Delta Chi",
+			"lat" : 37.420943, 
+			"lng" : -122.170023
+		},
+		{
+			"name": "Kappa Sigma",
+			"lat" : 37.420319, 
+			"lng" : -122.170346
+		},
+		{
+			"name": "Sigma Alpha Epsilon",
+			"lat" : 37.419915, 
+			"lng" : -122.170880
+		},
+		{
+			"name": "680",
+			"lat" : 37.420578, 
+			"lng" : -122.171413
+		},
+		{
+			"name": "Alondra",
+			"lat" : 37.422297, 
+			"lng" : -122.171240
+
+		},
+		{
+			"name": "Cardenal",
+			"lat" : 37.421963, 
+			"lng" : -122.171146
+
+		},
+		{
+			"name": "Faisan",
+			"lat" : 37.421673, 
+			"lng" : -122.171390
+
+		},
+		{
+			"name": "Gavilan",
+			"lat" : 37.421724, 
+			"lng" : -122.171959
+
+		},
+		{
+			"name": "Loro",
+			"lat" : 37.422074, 
+			"lng" : -122.172442
+
+		},
+		{
+			"name": "Mirlo",
+			"lat" : 37.422408, 
+			"lng" : -122.172321
+
+		},
+		{
+			"name": "Paloma",
+			"lat" : 37.422370, 
+			"lng" : -122.171717
+
+		},
+		{
+			"name": "Roble Hall",
+			"lat" : 37.424238, 
+			"lng" : -122.174469
+
+		},
+		{
+			"name": "Ujamaa A",
+			"lat" : 37.424852, 
+			"lng" : -122.175757
+
+		},
+		{
+			"name": "Ujamaa B",
+			"lat" : 37.424558, 
+			"lng" : -122.175480
+
+		},
+		{
+			"name": "Naranja",
+			"lat" : 37.425280, 
+			"lng" : -122.175875
+
+		},
+		{
+			"name": "Adelfa",
+			"lat" : 37.425389, 
+			"lng" : -122.176446
+
+		},
+		{
+			"name": "Eucalipto",
+			"lat" : 37.425099, 
+			"lng" : -122.176808
+
+		},
+		{
+			"name": "Granada",
+			"lat" : 37.424952, 
+			"lng" : -122.177312
+
+		},
+		{
+			"name": "EAST",
+			"lat" : 37.425683, 
+			"lng" : -122.178533
+
+		},
+		{
+			"name": "Murray",
+			"lat" : 37.425178,  
+			"lng" : -122.178431
+
+		},
+		{
+			"name": "Yost",
+			"lat" : 37.424801,  
+			"lng" : -122.178420
+
+		},
+		{
+			"name": "Griffin",
+			"lat" : 37.424392,  
+			"lng" : -122.179396
+
+		},
+		{
+			"name": "Anderson",
+			"lat" : 37.424809,  
+			"lng" : -122.179421
+
+		},
+		{
+			"name": "Marx",
+			"lat" : 37.424888,  
+			"lng" : -122.179954
+
+		},
+		{
+			"name": "Jenkins",
+			"lat" : 37.424432,   
+			"lng" : -122.179922
+
+		},
+		{
+			"name": "Potter",
+			"lat" : 37.425693, 
+			"lng" : -122.179796
+
+		},
+		{
+			"name": "Adams",
+			"lat" : 37.426038,  
+			"lng" : -122.179753
+
+		},
+		{
+			"name": "Robinson",
+			"lat" : 37.425906,  
+			"lng" : -122.180810
+
+		},
+		{
+			"name": "Schiff",
+			"lat" : 37.426079,  
+			"lng" : -122.180445
+
+		},
+		{
+			"name": "Gates Building",
+			"lat" : 37.430026,  
+			"lng" : -122.173320
+
+		},
+		{
+			"name": "Huang Center",
+			"lat" : 37.427834,  
+			"lng" : -122.174243
+
+		},
+		{
+			"name": "The Oval",
+			"lat" : 37.429848,   
+			"lng" : -122.169460
+
+		},
+		{
+			"name": "Jerry",
+			"lat" : 37.421126,  
+			"lng" : -122.173706
+
+		},
+		{
+			"name": "Kappa Alpha",
+			"lat" : 37.420497,  
+			"lng" : -122.174004
+		},
+		{
+			"name": "EBF",
+			"lat" : 37.419818,  
+			"lng" : -122.174100
+
+		},
+		{
+			"name": "Narnia",
+			"lat" : 37.419908, 
+			"lng" : -122.174801
+		}
 	]
 }
