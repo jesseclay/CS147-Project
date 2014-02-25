@@ -52,13 +52,17 @@
 	    // initialize input widgets first
 	    $('.form-signin .time').timepicker({
 	        'showDuration': true,
+	        'scrollDefaultNow': true,
+	        'typeaheadHighlight': true,
 	        'timeFormat': 'g:ia',
 	        'disableTouchKeyboard':true
 	    });
 
 	    $('.form-signin .date').datepicker({
 	        'format': 'm/d/yyyy',
-	        'autoclose': true
+	        'autoclose': true,
+	        'startDate' : '-1d',
+	        'todayHighlight' : true
 	    });
 
 	    // initialize datepair
