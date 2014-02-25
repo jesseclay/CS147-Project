@@ -1,9 +1,17 @@
 var data = require('../groupData.json');
 
 exports.view = function(req, res){
-	res.render('post_group',{
-		"title": req.query.classname
-	});
+	var db = require("../db");
+	console.log(db);
+	db.getLoc(displayLoc);
+	function displayLoc(err, locations){
+		if (err) {console.log(err); res.send(500);}
+		console.log("passed");
+		res.render('post_group',{
+			"title": req.query.classname,
+			"locData": locations
+		});
+	}
 };
 
 exports.add = function(req,res){

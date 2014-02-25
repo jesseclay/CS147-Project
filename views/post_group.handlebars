@@ -34,14 +34,23 @@
 			<input type="text" class="form-control date end" placeholder="End Date" name="end_date" required>
 
 			<input type="text" class="form-control time end" placeholder="End Time" name="end_time" required>
+			<select class="form-control" id="locationSelector">
+				<option id="currLoc" value="Current Location" selected>Current Location</option>
+				{{#each locData}}
+				  <option value="{{name}}" data-lat="{{lat}}" data-lng="{{lng}}">{{name}}</option>
+				{{/each}}
+			</select>
 
-			<input type="text" class="form-control" placeholder="Location" name="location" required>
+			<input id="hiddenLat" type="hidden" name="latitude" value="">
+
+			<input id="hiddenLng" type="hidden" name="longitude" value="">
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
     	</form>
 		</div>
 
 	</div>
+
 	<script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
@@ -72,8 +81,8 @@
 	    $('.ui-timepicker-wrapper').css('width', $('#descript').outerWidth()+"px");
 	</script>
 	
-	<script src="js/hci-friends.js"></script>
 	<script src="js/pushMenu.js"></script>
+	<script src="js/post_groupEvents.js"></script>
 
 </body>
 </html>
