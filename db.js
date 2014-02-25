@@ -38,9 +38,9 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
-		User.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// User.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
@@ -53,13 +53,14 @@ module.exports = {
     		creatorid: String,
     		memberids : [mongoose.Schema.Types.ObjectId],
     		numMembers: Number,
+    		belongsToGroup: Number
 		})
 
 		Group = mongoose.model('Group', groupSchema)
 
-		Group.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// Group.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 		
 		//CLASS
 		classSchema = mongoose.Schema({
@@ -69,9 +70,10 @@ module.exports = {
 
 		Class = mongoose.model('Class', classSchema);
 
-		Class.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+
+		// Class.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 
 		//location
 		locSchema = mongoose.Schema({
@@ -91,7 +93,6 @@ module.exports = {
 			var locItem = locArr[i];
 			this.addLoc(locItem.name,locItem.lat,locItem.lng);
 		};
-
 
   	},
 
