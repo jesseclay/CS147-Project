@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var local_db_uri = 'mongodb://localhost/test';
 var database_uri = process.env.MONGOHQ_URL || local_db_uri;
 mongoose.connect(database_uri);
-
+var locData = require('./places.json');
 
 
 var db;
@@ -12,6 +12,8 @@ var groupSchema;
 var Group;
 var classSchema;
 var Class;
+var locSchema;
+var Loc;
 
 
 
@@ -36,9 +38,9 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
-		User.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// User.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
@@ -46,16 +48,19 @@ module.exports = {
     		startTime: String,
     		endTime: String,
     		location: String,
+    		latitude: Number,
+    		longitude: Number,
     		creatorid: String,
     		memberids : [mongoose.Schema.Types.ObjectId],
     		numMembers: Number,
+    		belongsToGroup: Number
 		})
 
 		Group = mongoose.model('Group', groupSchema)
 
-		Group.remove({}, function(err) { 
-   			console.log('collection removed') 
-		});
+		// Group.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
 		
 		//CLASS
 		classSchema = mongoose.Schema({
@@ -65,9 +70,30 @@ module.exports = {
 
 		Class = mongoose.model('Class', classSchema);
 
-		Class.remove({}, function(err) { 
+
+		// Class.remove({}, function(err) { 
+  //  			console.log('collection removed') 
+		// });
+
+		//location
+		locSchema = mongoose.Schema({
+			name: String,
+			lat: Number,
+			lng: Number
+		})
+
+		Loc = mongoose.model('Loc', locSchema);
+
+		Loc.remove({}, function(err) { 
    			console.log('collection removed') 
 		});
+
+		var locArr = locData["places"];
+		for (var i = 0; i <locArr.length; i++) {
+			var locItem = locArr[i];
+			this.addLoc(locItem.name,locItem.lat,locItem.lng);
+		};
+
   	},
 
   	insertUser: function (callback, name, email, password) {
@@ -158,9 +184,9 @@ module.exports = {
   	},
 
 
-  	createGroup: function (callback, classname, name, start_time, end_time, location, creatorid) {
+  	createGroup: function (callback, classname, name, start_time, end_time, location, latitude, longitude, creatorid) {
   
-		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, creatorid: creatorid});
+		var newGroup = new Group({ classname: classname, name: name, startTime: start_time, endTime: end_time, location: location, latitude: latitude, longitude: longitude, creatorid: creatorid});
 		newGroup.memberids = [creatorid];
 		newGroup.numMembers = 1;
 		newGroup.save(function (err, group) {
@@ -253,10 +279,19 @@ module.exports = {
 			}
 			callback(user);
 		});
+  	},
+
+  	addLoc: function (name, lat, lng){
+  		var newLoc = new Loc({name: name, lat: lat, lng: lng});
+  		newLoc.save(function (err, loc) {
+			if (err) console.log("error saving");//handle the error
+			console.log("success");
+			console.log(loc);
+		});
+  	},
+
+  	getLoc: function (callback){
+  		Loc.find().sort({ name: 1 }).exec(callback);
   	}
 
-
-
 }
-
-

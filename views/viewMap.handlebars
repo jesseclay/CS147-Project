@@ -29,7 +29,6 @@
       #map-canvas { height: 100%; width: 100% }
     </style>
 
-
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
@@ -44,7 +43,9 @@
             var currMarker =  new google.maps.Marker({
               position: pos,
               map: map,
-              title: "Current Position"
+              icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/red-dot.png', null, null, null, new google.maps.Size(40, 40)),
+              title: "Current Position",
+              zIndex: 10
             });
 
             var currCircle = new google.maps.Circle({
@@ -55,10 +56,24 @@
               fillOpacity: 0.2,
               map: map,
               center: pos,
-              radius: 500
+              radius: 500,
+              zIndex: 1
             });
 
             map.setCenter(pos);
+
+            {{#each locData}}
+              var markPos = new google.maps.LatLng({{latitude}},{{longitude}});
+              console.log(markPos);
+              var mark = new google.maps.Marker({
+                position: markPos,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png', null, null, null, new google.maps.Size(40, 40)),
+                zIndex: 2
+              });
+            {{/each}}
+
           }, function() {
             handleNoGeolocation(true);
           });
@@ -104,9 +119,8 @@
 
   <div class="spacer"> </div>
   <div id="map-canvas"/> 
-    <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
-	<script src="js/hci-friends.js"></script>
   <script src="js/mapEvents.js"></script>
   <script src="js/pushMenu.js"></script>
 </body>

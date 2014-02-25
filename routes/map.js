@@ -1,9 +1,8 @@
 exports.view = function(req, res){
+	var userid = req.session.userid;
 	var classname = req.query.name;
 	var sort = req.query.sort;
-	console.log("SORT: " + sort);
 	var db = require("../db")
-	console.log("classname: " + classname);
     db.getGroup(function (groups) {
     	if(groups) {
     		if (sort === "sort_end") {
@@ -12,6 +11,8 @@ exports.view = function(req, res){
     			groups = sortByStartTime(groups);
     		}
     		groups = replaceTimes(groups);
+    		groups = markIfBelongsTo(groups, userid);
+    		console.log(groups);
 			res.render('map', {
 			'title' : classname,
 			'data' : groups
@@ -21,6 +22,7 @@ exports.view = function(req, res){
 };
 
 exports.sort = function(req, res){
+	var userid = req.session.userid;
 	var classname = req.params.classname;
 	var sort = req.params.sort;
 	var db = require("../db")
@@ -32,6 +34,7 @@ exports.sort = function(req, res){
     			groups = sortByEndTime(groups);
     		}
     		groups = replaceTimes(groups);
+    		groups = markIfBelongsTo(groups, userid);
 			res.render('map', {
 			'title' : classname,
 			'data' : groups
@@ -39,6 +42,19 @@ exports.sort = function(req, res){
         }
     }, classname);
 };
+
+function markIfBelongsTo(groups, userid) {
+	for (var i = 0; i < groups.length; i++) {
+		var group = groups[i];
+		var index = group.memberids.indexOf(userid);
+		if(index != -1) {
+			group.belongsToGroup = 1;
+		} else {
+			group.belongsToGroup = 0;
+		}
+	}
+	return groups;
+}
 
 function sortByStartTime(groups) {
 	groups.sort(function (group1, group2) {
@@ -80,11 +96,8 @@ function putInTimeFormat(dateObject) {
 	var ampm = "am";
 	if(hour >= 12) {
 		ampm = "pm";
-		console.log("HITTTT");
-		console.log("hour: " + hour);
 		if(hour !== 12) {
 			hour = hour - 12;
-			console.log("HITTTT@@@@@: " + hour);
 		}
 	}
 	if(hour === 0) {
@@ -95,7 +108,6 @@ function putInTimeFormat(dateObject) {
 	} else {
 		time = hour + ":" + minutes + ampm;
 	}
-	console.log(time);
 	return time;
 }
 

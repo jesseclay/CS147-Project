@@ -28,13 +28,25 @@ function initializePage() {
 	});
 	$("[id^=join]").unbind("click").bind("click", joinGroup);
     $("[id^=leave]").unbind("click").bind("click", leaveGroup);
+
+
+    $.each($(".join-leave-btn"), function(index, value){
+    	var belongsToGroup = parseInt(($(value).attr("data-belongs")));
+    	console.log(belongsToGroup);
+    	var groupid = $(value).attr("groupid");
+    	if(belongsToGroup === 1) {
+    		$(value).text("Leave Group");
+    		$(value).attr("id","leave"+groupid);
+    	} 
+	});
+
 }
 
 
 function joinGroup(e) {
+	console.log("hit join");
 	e.stopPropagation();
 	var groupid = $(this).attr("groupid");
-	console.log("id: " + groupid);
 	$.get("/join_group/" + groupid, function(result) {
 		if(result) {
 			toggleButton(groupid);
@@ -44,20 +56,28 @@ function joinGroup(e) {
 
 function toggleButton(groupid)
 {
+	var count = parseInt($("#count"+groupid).attr("data-count"));
 	if($('#leave' + groupid).size() == 0) {
 		$('#join' + groupid).text("Leave Group");
 		$('#join' + groupid).attr("id","leave"+groupid);
+		count++;
+    	$("#count"+groupid).attr("data-count", count);
+    	$("#leave"+groupid).unbind("click").bind("click", leaveGroup);
 	} else { //leave group
 		$('#leave' + groupid).text("Join Group");
 		$('#leave' + groupid).attr("id","join"+groupid);
+		count--;
+		$("#count"+groupid).attr("data-count", count);
+		$("#join"+groupid).unbind("click").bind("click", joinGroup);
 	}
+	$("#count"+groupid).text("# of People: " + count);
 
 }
 
 function leaveGroup(e) {
+	console.log("hit leave");
 	e.stopPropagation();
 	var groupid = $(this).attr("groupid");
-	console.log("id: " + groupid);
 	$.get("/leave_group/" + groupid, function(result) {
 		if(result) {
 			toggleButton(groupid);
