@@ -65,6 +65,8 @@
 	        'todayHighlight' : true
 	    });
 
+	    $('.date').unbind("click").bind("click", function(){$(this).blur();});
+
 	    // initialize datepair
 	    $('.form-signin').datepair();
 	    $('.ui-timepicker-wrapper').css('width', $('#descript').outerWidth()+"px");
