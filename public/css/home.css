@@ -16,6 +16,63 @@ hr{
 	margin-bottom: 15px;
 }
 
+#search {
+    margin-top: 10px;
+}
+
+.glyphicon-plus-sign
+{
+    color: #2773be;
+}
+
+.header
+{
+    display: -webkit-box;
+}
+
+
+.addclass
+{
+    margin-top: 0;
+    margin-left:25%;
+    margin-right: 0px;
+}
+
+.addsearch
+{
+    margin-top: 0;
+    margin-left:25%;
+    margin-right: 0px;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 20px;
+    padding: 10px 2px;
+    pointer-events: none;
+}
+
+
+
+
 .courseButton{
 	margin-bottom: 5px;
 	background-color: rgba(255,255,255,0.25);

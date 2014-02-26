@@ -9,7 +9,7 @@ function deleteClass(e) {
 	var classname = $(this).attr("classname");
 	$.get("/deleteclass/" + classname, function(result) {
 		if(result) {
-			document.location = "/course_setup";
+			document.location = "/home";
 		}
 	});
 }

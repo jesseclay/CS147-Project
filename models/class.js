@@ -19,7 +19,7 @@ exports.addClass = function(req, res) {
                 //create class
                 db.createClass(function (response) {
                     if (response) {
-                         res.redirect("/course_setup");
+                         res.redirect("/home");
                     }
                  }, classname, userid);
             } else { //class already in db
@@ -27,7 +27,7 @@ exports.addClass = function(req, res) {
                 db.updateClass(function (response) {
                     if (response) {
                         console.log(response)
-                        res.redirect("/course_setup");
+                        res.redirect("/home");
                     }
                  }, classname, userid);
 

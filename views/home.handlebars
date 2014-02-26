@@ -10,25 +10,67 @@
     <link href="css/general.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     
+    
 
 </head>
 
-<body class="cbp-spmenu-push cbp-spmenu-push-toleft">
+<body class="cbp-spmenu-push cbp-spmenu-push-toleft" >
 	
     {{> navbar this}}
 
 	<div class="container">
-    	<div class="main">
+    <div class="main">
 
-			{{> myclasses this}}
+			<!--<div class="header">
+        <h2>My Classes</h2> 
+      
+        <button class="btn btn-success btn-lg list-group-item addsearch">Add</button>
+        <button class="btn btn-default disabled btn-lg list-group-item addclass" style='display:none'>Add</button>
+      </div>
+      <div class="col-sm-6 searchbar" style='display:none'>
+        <form class="form-addcourse" id="add_course" role="form" method="get" action="/course_add">
+          <div class="right-inner-addon">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            <input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" name="name" required autofocus>
+          </div>
+        </form>
+      </div>-->
 
-		</div>
+      
+      <div class="col-sm-6">
+        <form class="form-addcourse" id="add_course" role="form" method="get" action="/course_add">
+        <div class="header">
+          <h2>My Classes</h2> 
+          <button class="btn btn-success btn-lg list-group-item addsearch">Add</button>
+          <input class="btn btn-primary btn-lg list-group-item addclass" style='display:none' type="submit" value="Add"/>
+        </div>
+        <div class="right-inner-addon searchbar" style='display:none'>
+          <i class="glyphicon glyphicon-plus-sign"></i>
+          <input type="text" class=".col-sm form-control" id="search" placeholder="Example: CS147" name="name" required autofocus>
+        </div>
+        </form>
+      </div>
+      
+      <hr>
+      {{#each courses}}
+        <form id="courseform" role="form">
+          <input type="hidden" name="name" value="{{classname}}">
+          <button type="submit" class="btn btn-default btn-lg btn-block   courseButton" formaction="/map">
+          <h4>{{classname}} </h4>
+          </button>
+        </form>
+      {{/each}}
+
+			
+
+  	</div>
 	</div>
 
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
 	<script src="js/pushMenu.js"></script>
+	<script src="js/home_events.js"></script>
 	
 </body>
 </html>
