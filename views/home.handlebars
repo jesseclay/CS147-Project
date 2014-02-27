@@ -52,14 +52,19 @@
       </div>
       
       <hr>
-      {{#each courses}}
-        <form id="courseform" role="form">
-          <input type="hidden" name="name" value="{{classname}}">
-          <button type="submit" class="btn btn-default btn-lg btn-block   courseButton" formaction="/map">
-          <h4>{{classname}} </h4>
-          </button>
-        </form>
-      {{/each}}
+
+      {{#if hasCourses}}
+        {{#each courses}}
+          <form id="courseform" role="form">
+            <input type="hidden" name="name" value="{{classname}}">
+            <button type="submit" class="btn btn-default btn-lg btn-block   courseButton" formaction="/map">
+            <h4>{{classname}} </h4>
+            </button>
+          </form>
+        {{/each}}
+      {{else}}
+        <h3>Click Add button above to add course</h3>
+      {{/if}}
 
 			
 
