@@ -2,9 +2,14 @@ exports.view = function(req, res){
 	var userid = req.session.userid;
 	var classname = req.query.name;
 	var sort = req.query.sort;
-	var db = require("../db")
+	var db = require("../db");
+	var hasGroups = false;
     db.getGroup(function (groups) {
     	if(groups) {
+    		console.log(groups);
+    		if(groups.length > 0) {
+    			hasGroups = true;
+    		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
     		} else {
@@ -12,10 +17,10 @@ exports.view = function(req, res){
     		}
     		groups = replaceTimes(groups);
     		groups = markIfBelongsTo(groups, userid);
-    		console.log(groups);
 			res.render('map', {
 			'title' : classname,
-			'data' : groups
+			'data' : groups,
+			'hasGroups' : hasGroups
 			});
         }
     }, classname);
@@ -25,9 +30,13 @@ exports.sort = function(req, res){
 	var userid = req.session.userid;
 	var classname = req.params.classname;
 	var sort = req.params.sort;
-	var db = require("../db")
+	var db = require("../db");
+	var hasGroups = false;
     db.getGroup(function (groups) {
     	if(groups) {
+    		if(groups.length > 0) {
+    			hasGroups = true;
+    		}
     		if(sort === "sort_start") {
     			groups = sortByStartTime(groups);
     		} else if (sort === "sort_end") {
@@ -37,7 +46,8 @@ exports.sort = function(req, res){
     		groups = markIfBelongsTo(groups, userid);
 			res.render('map', {
 			'title' : classname,
-			'data' : groups
+			'data' : groups,
+			'hasGroups' : hasGroups
 			});
         }
     }, classname);
