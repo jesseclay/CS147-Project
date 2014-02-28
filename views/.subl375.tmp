@@ -18,7 +18,7 @@
 	
     {{> navbar this}}
 
-	<div class="container" >
+	<div class="container">
     <div class="main">
 
 			<!--<div class="header">
