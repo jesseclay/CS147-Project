@@ -58,9 +58,9 @@ module.exports = {
 
 		Group = mongoose.model('Group', groupSchema)
 
-		// Group.remove({}, function(err) { 
-  //  			console.log('collection removed') 
-		// });
+		Group.remove({}, function(err) { 
+  			console.log('collection removed') 
+		});
 		
 		//CLASS
 		classSchema = mongoose.Schema({
