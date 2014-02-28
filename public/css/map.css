@@ -30,15 +30,16 @@ h5{
 	margin-bottom:0%;
 }
 
-.btn{
+.dropdown-toggle, .mapButton, .textBtn{
 	color: white;
 	background-color: rgba(255,255,255,0.25);
 	background-image: none;
 	text-shadow:none;
 	padding-top: 5px;
+	float: right;
 }
 
-.btn:hover{
+.dropdown-toggle:hover, .mapButton:hover, .textBtn:hover{
 	color: white;
 	background-color: rgba(255,255,255,0.5);
 	background-image: none;
@@ -74,17 +75,17 @@ a.list-group-item:hover{
 }
 
 .spacer{
-	width: 10px;
+	width: 5px;
 	display: inline-block;
 }
 
 .nameContainer{
-	width: 150px;
+	width: 190px;
 	white-space: nowrap;
 }
 
 .valueContainer{
-	width: 100px;
+	width: 115px;
 	white-space: nowrap;
 	text-align: right;
 }
@@ -95,4 +96,16 @@ a.list-group-item:hover{
 
 .createButton{
 	float: right;
+}
+
+.checkBtn{
+	top: -6px;
+}
+
+.glyphicon-check{
+	color: #00FF00;
+}
+
+.createButton{
+
 }
