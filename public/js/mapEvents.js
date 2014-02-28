@@ -18,12 +18,12 @@ function initializePage() {
 		if (valueElement.css("display")=="none"){
 			$(this).find('.extraInfo').css("display","none");
 			valueElement.css("display","inline-block");
-			$(this).find('.nameContainer').css('width',($(this).width()-valueElement.width()-20)+"px");
+			$(this).find('.nameContainer').css('width',($(this).width()-valueElement.width()-20-$(this).find('.checkBtn').width())+"px");
 		}
 		else{
 			$(this).find('.extraInfo').css("display","default");
 			valueElement.css("display","none");
-			$(this).find('.nameContainer').css('width',$(this).width()-20+"px");
+			$(this).find('.nameContainer').css('width',$(this).width()-25-$(this).find('.checkBtn').width()+"px");
 		}
 	});
 	$("[id^=join]").unbind("click").bind("click", joinGroup);
@@ -37,6 +37,9 @@ function initializePage() {
     	if(belongsToGroup === 1) {
     		$(value).text("Leave Group");
     		$(value).attr("id","leave"+groupid);
+    		var checkBtn = $(value).parent().find(".checkBtn");
+			checkBtn.removeClass("glyphicon-unchecked");
+			checkBtn.addClass("glyphicon-check");
     	} 
 	});
 
@@ -52,6 +55,9 @@ function joinGroup(e) {
 			toggleButton(groupid);
 		}
 	});
+	var checkBtn = $(this).parent().find(".checkBtn");
+	checkBtn.removeClass("glyphicon-unchecked");
+	checkBtn.addClass("glyphicon-check");
 }
 
 function toggleButton(groupid)
@@ -83,4 +89,7 @@ function leaveGroup(e) {
 			toggleButton(groupid);
 		}
 	});
+	var checkBtn = $(this).parent().find(".checkBtn");
+	checkBtn.removeClass("glyphicon-check");
+	checkBtn.addClass("glyphicon-unchecked");
 }

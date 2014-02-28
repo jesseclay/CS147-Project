@@ -34,7 +34,7 @@
 			<input type="text" class="form-control date end" placeholder="End Date" name="end_date" required>
 
 			<input type="text" class="form-control time end" placeholder="End Time" name="end_time" required>
-			<select class="form-control" id="locationSelector">
+			<select class="form-control" id="locationSelector" name="location">
 				<option id="currLoc" value="Current Location" selected>Current Location</option>
 				{{#each locData}}
 				  <option value="{{name}}" data-lat="{{lat}}" data-lng="{{lng}}">{{name}}</option>

@@ -26,6 +26,29 @@ exports.view = function(req, res){
     }, classname);
 };
 
+exports.alternateView = function(req, res){
+	var userid = req.session.userid;
+	var classname = req.query.name;
+	var sort = req.query.sort;
+	var db = require("../db")
+    db.getGroup(function (groups) {
+    	if(groups) {
+    		if (sort === "sort_end") {
+    			groups = sortByEndTime(groups);
+    		} else {
+    			groups = sortByStartTime(groups);
+    		}
+    		groups = replaceTimes(groups);
+    		groups = markIfBelongsTo(groups, userid);
+    		console.log(groups);
+			res.render('alternateMap', {
+			'title' : classname,
+			'data' : groups
+			});
+        }
+    }, classname);
+};
+
 exports.sort = function(req, res){
 	var userid = req.session.userid;
 	var classname = req.params.classname;
