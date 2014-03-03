@@ -55,7 +55,7 @@ function initializePage() {
 
     $("#viewMap").click(function(){
     	ga("send", "event", "viewMap", "click");
-    	console.log("hi");
+    	ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
     });
 }
 
