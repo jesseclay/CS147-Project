@@ -11,7 +11,11 @@ exports.addUser = function(req, res) {
         	req.session.email = email;
 			req.session.name = name;
 			req.session.userid = userid;
-        	res.redirect('home');
+			db.updateClass(function (response) {
+            	if (response) {
+                    res.redirect("/home");
+                }
+            }, 'MATH51', userid);
         }, name, email, password);
 };
 

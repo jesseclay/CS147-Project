@@ -58,9 +58,9 @@ module.exports = {
 
 		Group = mongoose.model('Group', groupSchema)
 
-		Group.remove({}, function(err) { 
-  			console.log('collection removed') 
-		});
+		// Group.remove({}, function(err) { 
+  // 			console.log('collection removed') 
+		// });
 		
 		//CLASS
 		classSchema = mongoose.Schema({
@@ -70,10 +70,17 @@ module.exports = {
 
 		Class = mongoose.model('Class', classSchema);
 
+		Class.remove({}, function(err) { 
+			console.log('classes removed') 
+		});
 
-		// Class.remove({}, function(err) { 
-  //  			console.log('collection removed') 
-		// });
+		var newClass = new Class;
+		newClass.classname = 'MATH51';
+		newClass.save(function (err, group) {
+			if (err) {
+				console.log(err);//handle the error
+			}
+		});
 
 		//location
 		locSchema = mongoose.Schema({
