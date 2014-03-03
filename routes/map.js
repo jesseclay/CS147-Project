@@ -20,7 +20,8 @@ exports.view = function(req, res){
 			res.render('map', {
 			'title' : classname,
 			'data' : groups,
-			'hasGroups' : hasGroups
+			'hasGroups' : hasGroups,
+			'alternate' : false
 			});
         }
     }, classname);
@@ -30,9 +31,14 @@ exports.alternateView = function(req, res){
 	var userid = req.session.userid;
 	var classname = req.query.name;
 	var sort = req.query.sort;
-	var db = require("../db")
+	var db = require("../db");
+	var hasGroups = false;
     db.getGroup(function (groups) {
     	if(groups) {
+    		console.log(groups);
+    		if(groups.length > 0) {
+    			hasGroups = true;
+    		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
     		} else {
@@ -40,10 +46,11 @@ exports.alternateView = function(req, res){
     		}
     		groups = replaceTimes(groups);
     		groups = markIfBelongsTo(groups, userid);
-    		console.log(groups);
-			res.render('alternateMap', {
+			res.render('map', {
 			'title' : classname,
-			'data' : groups
+			'data' : groups,
+			'hasGroups' : hasGroups,
+			'alternate' : true
 			});
         }
     }, classname);

@@ -24,7 +24,13 @@
       <h2 class="title">{{title}}</h2>
      <!--  <form id="postGroup" role="form">
         <input type="hidden" name="classname" value="{{title}}"> -->
+
+      {{#if alternate}}
+        <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-success createButton" id="createGroup" data.classname = "{{title}}"><span class="glyphicon glyphicon-plus"></span></button></a>
+      {{else}}
         <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="createGroup" data.classname = "{{title}}">New Group</button></a>
+      {{/if}}
+        
      <!--  </form> -->
     </div>
     <br>
@@ -34,12 +40,21 @@
     	Start Time <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu" role="menu">
-        <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
-        <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
+        <!-- {{#if alternate}}
+          <li><a href="/alternateMap?name={{title}}&sort=sort_start">Start Time</a></li>
+          <li><a href="/alternateMap?name={{title}}&sort=sort_end">End Time</a></li>
+        {{else}} -->
+          <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
+          <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
+        <!-- {{/if}} -->
         <!-- <li><a href="#">Location</a></li> -->
   		</ul>
   	</div>
-    <a href="/viewMap?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
+   <!--  {{#if alternate}}
+      <a href="/viewMap?classname={{title}}&alternate=true"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
+    {{else}} -->
+      <a href="/viewMap?classname={{title}}&alternate=false"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
+    <!-- {{/if}} -->
   	<br>
     <br>
 
@@ -67,19 +82,25 @@
         {{/each}}
 
       {{else}}
-        <h3>This class has no groups. Click "NewGroup" to create a new study group
-        </h3>
+        <h3>This class has no groups.</h3>
       {{/if}}
       </div>
 
       <div class="delete_div">
       <button type="button" class="btn-danger btn-lg delete_button" id="delete{{title}}" classname="{{title}}">Delete Course</button>
-      <hr>
-      <a href="/alternateMap?name={{title}}"><button type="button">Alternate View</button></a>
       </div>
       
 
 	</div>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48461831-2', { 'cookieDomain': 'none' });
+    ga('send', 'pageview');
+  </script>
     <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/hci-friends.js"></script>
