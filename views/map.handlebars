@@ -40,20 +40,22 @@
     	Start Time <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu" role="menu">
+        <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
+        <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
         <!-- {{#if alternate}}
           <li><a href="/alternateMap?name={{title}}&sort=sort_start">Start Time</a></li>
           <li><a href="/alternateMap?name={{title}}&sort=sort_end">End Time</a></li>
         {{else}} -->
-          <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
-          <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
+          
         <!-- {{/if}} -->
         <!-- <li><a href="#">Location</a></li> -->
   		</ul>
   	</div>
+        <a href="/viewMap?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
    <!--  {{#if alternate}}
       <a href="/viewMap?classname={{title}}&alternate=true"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
     {{else}} -->
-      <a href="/viewMap?classname={{title}}&alternate=false"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
+
     <!-- {{/if}} -->
   	<br>
     <br>
