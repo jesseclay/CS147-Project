@@ -50,6 +50,7 @@ function initializePage() {
     	var endTime = new Date().getTime();
   		var timeSpent = endTime - startTime;
     	ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
+    	ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
     });
 
     $("#viewMap").click(function(){
