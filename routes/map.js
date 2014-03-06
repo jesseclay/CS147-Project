@@ -4,6 +4,7 @@ exports.view = function(req, res){
 	var sort = req.query.sort;
 	var db = require("../db");
 	var hasGroups = false;
+	var sortByStart = true;
     db.getGroup(function (groups) {
     	if(groups) {
     		console.log(groups);
@@ -12,6 +13,7 @@ exports.view = function(req, res){
     		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
+    			sortByStart = false;
     		} else {
     			groups = sortByStartTime(groups);
     		}
@@ -21,6 +23,7 @@ exports.view = function(req, res){
 			'title' : classname,
 			'data' : groups,
 			'hasGroups' : hasGroups,
+			'sortByStart' : sortByStart,
 			'alternate' : false
 			});
         }
@@ -62,6 +65,8 @@ exports.sort = function(req, res){
 	var sort = req.params.sort;
 	var db = require("../db");
 	var hasGroups = false;
+	var sortByStart = true;
+	console.log("HIT SORT");
     db.getGroup(function (groups) {
     	if(groups) {
     		if(groups.length > 0) {
@@ -70,6 +75,8 @@ exports.sort = function(req, res){
     		if(sort === "sort_start") {
     			groups = sortByStartTime(groups);
     		} else if (sort === "sort_end") {
+    			sortByStart = false;
+    			console.log("HITTTTT FALSE")
     			groups = sortByEndTime(groups);
     		}
     		groups = replaceTimes(groups);
@@ -77,7 +84,8 @@ exports.sort = function(req, res){
 			res.render('map', {
 			'title' : classname,
 			'data' : groups,
-			'hasGroups' : hasGroups
+			'hasGroups' : hasGroups,
+			'sortByStart' : sortByStart 
 			});
         }
     }, classname);
