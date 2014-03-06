@@ -1,4 +1,7 @@
+
+var startTime;
 $(document).ready(function() {
+	startTime = new Date().getTime();
 	initializePage();
 })
 
@@ -43,6 +46,17 @@ function initializePage() {
     	} 
 	});
 
+    $("#createGroup").click(function(){
+    	var endTime = new Date().getTime();
+  		var timeSpent = endTime - startTime;
+    	ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
+    	ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
+    });
+
+    $("#viewMap").click(function(){
+    	ga("send", "event", "viewMap", "click");
+    	ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
+    });
 }
 
 
