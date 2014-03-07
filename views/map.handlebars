@@ -26,11 +26,11 @@
      <!--  <form id="postGroup" role="form">
         <input type="hidden" name="classname" value="{{title}}"> -->
 
-      {{#if alternate}}
+      <!-- {{#if alternate}} -->
         <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-success createButton" id="createGroup" data.classname = "{{title}}"><span class="glyphicon glyphicon-plus"></span></button></a>
-      {{else}}
+      <!-- {{else}}
         <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="createGroup" data.classname = "{{title}}">New Group</button></a>
-      {{/if}}
+      {{/if}} -->
         
      <!--  </form> -->
     </div>
@@ -44,22 +44,9 @@
         <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
         <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
         <li><a href="/map?name={{title}}&sort=sort_distance" id="coordsURL">Distance</a></li>
-        <!-- {{#if alternate}}
-          <li><a href="/alternateMap?name={{title}}&sort=sort_start">Start Time</a></li>
-          <li><a href="/alternateMap?name={{title}}&sort=sort_end">End Time</a></li>
-        {{else}} -->
-          
-        <!-- {{/if}} -->
-        <!-- <li><a href="#">Location</a></li> -->
   		</ul>
   	</div>
         <a href="/viewMap?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
-   <!--  {{#if alternate}}
-      <a href="/viewMap?classname={{title}}&alternate=true"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
-    {{else}} -->
-
-    <!-- {{/if}} -->
-
   	<br>
     <br>
 
@@ -79,7 +66,6 @@
             <div class='extraInfo' style='display:none'>Time: {{startTime}}-{{endTime}}</div>
             <div class='extraInfo' style ='display:none'>Location: {{location}}</div>
             <div class='extraInfo' style ='display:none; padding-bottom:10px' id="count{{_id}}" data-count="{{numMembers}}"># of People: {{numMembers}}</div>
-            <!-- <hr class='extraInfo' style="display:none"> -->
             <button type="button" class="btn btn-default extraInfo join-leave-btn" data-belongs="{{belongsToGroup}}" style='display:none' id="join{{_id}}" groupid="{{_id}}">
             Join Group
           </button>
