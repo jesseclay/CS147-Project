@@ -1,10 +1,15 @@
+
 exports.view = function(req, res){
 	var userid = req.session.userid;
 	var classname = req.query.name;
 	var sort = req.query.sort;
 	var db = require("../db");
 	var hasGroups = false;
+<<<<<<< HEAD
 	var sortByStart = true;
+=======
+    
+>>>>>>> 8930e23194741eb38b5b961dccb4722c06066e6d
     db.getGroup(function (groups) {
     	if(groups) {
     		console.log(groups);
@@ -13,8 +18,18 @@ exports.view = function(req, res){
     		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
+<<<<<<< HEAD
     			sortByStart = false;
     		} else {
+=======
+    		} else if (sort == "sort_distance") {
+    			var my_lng = req.query.lng;
+    			//console.log(my_lng);
+				var my_lat = req.query.lat;
+    			groups = sortByDistance(groups, my_lng, my_lat);
+    		}
+    		else {
+>>>>>>> 8930e23194741eb38b5b961dccb4722c06066e6d
     			groups = sortByStartTime(groups);
     		}
     		groups = replaceTimes(groups);
@@ -44,6 +59,8 @@ exports.alternateView = function(req, res){
     		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
+    		} else if (sort === "sort_distance") {
+    			groups = sortByDistance(groups);
     		} else {
     			groups = sortByStartTime(groups);
     		}
@@ -119,6 +136,32 @@ function sortByEndTime(groups) {
 		var dateObject2 = new Date(Date.parse(group2.endTime));
 		return dateObject1 - dateObject2;
 	});
+	return groups;
+}
+
+
+
+function calculateDistance(g_long, g_lat, my_lng, my_lat) {
+	var dx = Math.pow( (my_lng - g_long), 2);
+	var dy = Math.pow( (my_lat - g_lat), 2);
+	var dist = Math.sqrt(dx + dy);
+	return dist;
+}
+
+function sortByDistance(groups, my_lng, my_lat){
+	groups.sort(function (group1, group2) {
+		var x1 = Math.abs(group1.longitude);
+		var y1 = Math.abs(group1.latitude);
+		var x2 = Math.abs(group2.longitude);
+		var y2 = Math.abs(group2.latitude);
+		
+		d1 = calculateDistance(x1, y1, my_lng, my_lat);
+		d2 = calculateDistance(x2, y2, my_lng, my_lat);
+		return d1 - d2;
+	});
+	console.log(groups);
+	//console.log(my_lng);
+	//console.log(my_lat);
 	return groups;
 }
 
