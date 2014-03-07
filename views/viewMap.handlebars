@@ -8,7 +8,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
   <link href="css/general.css" rel="stylesheet">
-  <link href="css/map.css" rel="stylesheet">
+  <!-- <link href="css/map.css" rel="stylesheet"> -->
   <link href="css/home.css" rel="stylesheet">
   <link href="css/post_group.css" rel="stylesheet">
 
@@ -26,7 +26,10 @@
         position:static;
         height:45px;
       }
-      #map-canvas { height: 100%; width: 100% }
+      #map-canvas { height: 100%; width: 100%; color: black; }
+      h4{
+        color: black;
+      }
     </style>
 
     <script type="text/javascript">
@@ -48,32 +51,40 @@
               zIndex: 10
             });
 
-            var currCircle = new google.maps.Circle({
-              strokeColor: '#FF0000',
-              strokeOpacity: 0.6,
-              strokeWeight: 1,
-              fillColor: '#FF0000',
-              fillOpacity: 0.2,
-              map: map,
-              center: pos,
-              radius: 500,
-              zIndex: 1
-            });
-
             map.setCenter(pos);
 
-            {{#each locData}}
-              var markPos = new google.maps.LatLng({{latitude}},{{longitude}});
-              console.log(markPos);
-              var mark = new google.maps.Marker({
-                position: markPos,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png', null, null, null, new google.maps.Size(40, 40)),
-                zIndex: 2
-              });
-            {{/each}}
+            // var currCircle = new google.maps.Circle({
+            //   strokeColor: '#FF0000',
+            //   strokeOpacity: 0.6,
+            //   strokeWeight: 1,
+            //   fillColor: '#FF0000',
+            //   fillOpacity: 0.2,
+            //   map: map,
+            //   center: pos,
+            //   radius: 500,
+            //   zIndex: 1
+            // });
 
+            var currString = '<div id="content">'+
+                '<div id="siteNotice" style="color:black;">'+
+                '</div>'+
+                '<h4 id="firstHeading" class="firstHeading">'+'My Current Location'+'</h4>'+
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: currString
+            });
+
+            google.maps.event.addListener(currMarker, 'click', function() {
+              infowindow.open(map,currMarker);
+            });
+
+
+            {{#each locData}}
+              console.log("hi"+{{belongsToGroup}});
+              createMarker("{{latitude}}","{{longitude}}","{{name}}", "{{startTime}}", "{{endTime}}", "{{numMembers}}","{{belongsToGroup}}","{{_id}}");
+            {{/each}}
+            
           }, function() {
             handleNoGeolocation(true);
           });
@@ -82,6 +93,95 @@
           handleNoGeolocation(false);
         }
       }
+
+      function createMarker(lat, lng, name, startTime, endTime,numMembers,belongsToGroup, _id){
+        var markPos = new google.maps.LatLng(lat,lng);
+              console.log(markPos);
+              var mark = new google.maps.Marker({
+                position: markPos,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png', null, null, null, new google.maps.Size(40, 40)),
+                zIndex: 2
+              });
+              var start = putInTimeFormat(startTime);
+              var end = putInTimeFormat(endTime);
+              var infoString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h4 id="firstHeading" class="firstHeading">'+name+ '</h4>'+
+                '<div id="bodyContent">'+
+                '<p><b>Time:</b> '+start+'-'+end+'</p>' + 
+                '<p id="count'+_id+'" data-count="'+numMembers+'"><b># of People:</b> '+numMembers+'</p>' + 
+                '<button type="button" class="btn btn-default extraInfo join-leave-btn" data-belongs="'+belongsToGroup+'"'+
+                ' id="join'+_id+'" groupid="'+_id+'">'+
+                'Join Group'+
+                '</button>'+
+                '</div>'+
+                '</div>';
+              var newInfoWindow = new google.maps.InfoWindow({
+                  content: infoString
+              });
+
+              google.maps.event.addListener(mark, 'click', function() {
+                newInfoWindow.open(map,mark);
+
+                $.each($(".join-leave-btn"), function(index, value){
+                    var belongsToGroup = parseInt(($(value).attr("data-belongs")));
+                    console.log(belongsToGroup);
+                    var groupid = $(value).attr("groupid");
+                    if(belongsToGroup === 1) {
+                      $(value).text("Leave Group");
+                      $(value).attr("id","leave"+groupid);
+                      var checkBtn = $(value).parent().find(".checkBtn");
+                    checkBtn.removeClass("glyphicon-unchecked");
+                    checkBtn.addClass("glyphicon-check");
+                    } 
+                }); 
+
+                $("[id^=join]").unbind("click").bind("click", joinGroup);
+                $("[id^=leave]").unbind("click").bind("click", leaveGroup);
+              // });
+
+              // google.maps.event.addListener(mark, 'click', function() {
+              //   new google.maps.InfoWindow({
+              //     content: '<div id="content">'+
+              //   '<div id="siteNotice">'+
+              //   '</div>'+
+              //   '<h4 id="firstHeading" class="firstHeading">'+name+'</h4>'+
+              //   '<div id="bodyContent">'+
+              //   '<p><b>Time:</b> '+putInTimeFormat(startTime)+'-'+putInTimeFormat(endTime)+'</p>' + 
+              //   '<p><b># of People:</b> '+numMembers+'</p>' + 
+              //   
+              //   '</div>'+
+              //   '</div>'
+              // }).open(map,mark);
+              });
+
+      }
+
+      function putInTimeFormat(dateString) {
+              var dateObject = new Date(dateString);
+              var hour = parseInt(dateObject.getHours());
+              var minutes = dateObject.getMinutes().toString();
+              var time = "";
+              var ampm = "am";
+              if(hour >= 12) {
+                ampm = "pm";
+                if(hour !== 12) {
+                  hour = hour - 12;
+                }
+              }
+              if(hour === 0) {
+                hour = 12;
+              }
+              if(minutes < 10) {
+                time = hour + ":" + minutes + "0" + ampm;
+              } else {
+                time = hour + ":" + minutes + ampm;
+              }
+              return time;
+            }
 
       function handleNoGeolocation(errorFlag) {
         if (errorFlag) {
@@ -100,6 +200,54 @@
         map.setCenter(options.position);
       }
 
+      function joinGroup(e) {
+        console.log("hit join");
+        e.stopPropagation();
+        var groupid = $(this).attr("groupid");
+        $.get("/join_group/" + groupid, function(result) {
+          if(result) {
+            toggleButton(groupid);
+          }
+        });
+        var checkBtn = $(this).parent().find(".checkBtn");
+        checkBtn.removeClass("glyphicon-unchecked");
+        checkBtn.addClass("glyphicon-check");
+      }
+
+      function toggleButton(groupid)
+      {
+        var count = parseInt($("#count"+groupid).attr("data-count"));
+        if($('#leave' + groupid).size() == 0) {
+          $('#join' + groupid).text("Leave Group");
+          $('#join' + groupid).attr("id","leave"+groupid);
+          count++;
+            $("#count"+groupid).attr("data-count", count);
+            $("#leave"+groupid).unbind("click").bind("click", leaveGroup);
+        } else { //leave group
+          $('#leave' + groupid).text("Join Group");
+          $('#leave' + groupid).attr("id","join"+groupid);
+          count--;
+          $("#count"+groupid).attr("data-count", count);
+          $("#join"+groupid).unbind("click").bind("click", joinGroup);
+        }
+        $("#count"+groupid).html("<b># of People:</b> " + count);
+
+      }
+
+      function leaveGroup(e) {
+        console.log("hit leave");
+        e.stopPropagation();
+        var groupid = $(this).attr("groupid");
+        $.get("/leave_group/" + groupid, function(result) {
+          if(result) {
+            toggleButton(groupid);
+          }
+        });
+        var checkBtn = $(this).parent().find(".checkBtn");
+        checkBtn.removeClass("glyphicon-check");
+        checkBtn.addClass("glyphicon-unchecked");
+      }
+
       function loadScript() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -107,6 +255,8 @@
             'callback=initialize';
         document.body.appendChild(script);
       }
+
+
       window.onload = loadScript;
       
     </script>
@@ -118,19 +268,9 @@
   {{> navbar this}}
 
   <div class="spacer"> </div>
-  <div id="map-canvas"/> 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-48461831-2', 'study-buddies.herokuapp.com');
-    ga('send', 'pageview');
-  </script>
+  <div id="map-canvas"></div>
   <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
-  <script src="js/mapEvents.js"></script>
   <script src="js/pushMenu.js"></script>
 </body>
 </html>

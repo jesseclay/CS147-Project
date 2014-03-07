@@ -29,8 +29,6 @@ function initializePage() {
 			$(this).find('.nameContainer').css('width',$(this).width()-25-$(this).find('.checkBtn').width()+"px");
 		}
 	});
-	$("[id^=join]").unbind("click").bind("click", joinGroup);
-    $("[id^=leave]").unbind("click").bind("click", leaveGroup);
 
 
     $.each($(".join-leave-btn"), function(index, value){
@@ -46,17 +44,23 @@ function initializePage() {
     	} 
 	});
 
+	$("[id^=join]").unbind("click").bind("click", joinGroup);
+    $("[id^=leave]").unbind("click").bind("click", leaveGroup);
+
     $("#createGroup").click(function(){
     	var endTime = new Date().getTime();
   		var timeSpent = endTime - startTime;
-    	ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
-    	ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
+    	// ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
+    	// ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
     });
 
     $("#viewMap").click(function(){
-    	ga("send", "event", "viewMap", "click");
-    	ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
+    	// ga("send", "event", "viewMap", "click");
+    	// ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
     });
+
+
+
 }
 
 
