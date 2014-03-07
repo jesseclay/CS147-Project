@@ -30,7 +30,8 @@ function initializePage() {
 		}
 	});
 
-
+	$(document).find('.nameContainer').css('width',($(document).find('.nameContainer').parent().width()-$(document).find('.valueContainer').width()-30-$(document).find('.checkBtn').width())+"px");
+	
     $.each($(".join-leave-btn"), function(index, value){
     	var belongsToGroup = parseInt(($(value).attr("data-belongs")));
     	console.log(belongsToGroup);

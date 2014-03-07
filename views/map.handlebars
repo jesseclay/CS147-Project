@@ -2,24 +2,6 @@
 
 <html>
 <head>
-<<<<<<< HEAD
-<!-- Google Analytics Content Experiment code -->
-<!-- <script>function utmx_section(){}function utmx(){}(function(){var
-// k='82811775-2',d=document,l=d.location,c=d.cookie;
-// if(l.search.indexOf('utm_expid='+k)>0)return;
-// function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-// indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-// length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-// '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-// '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-// '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-// valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-// '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-// </script><script>utmx('url','A/B');</script> -->
-<!-- End of Google Analytics Content Experiment code -->
-=======
-
->>>>>>> 8930e23194741eb38b5b961dccb4722c06066e6d
 	<title>Study Buddies</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,15 +21,9 @@
   <div class="container">
 
 		<div>
-      <h2 class="title">{{title}}</h2>
-     <!--  <form id="postGroup" role="form">
-        <input type="hidden" name="classname" value="{{title}}"> -->
-
-      {{#if alternate}}
+      <h2 class="title">{{title}}</h2>    
         <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-success createButton" id="createGroup" data.classname = "{{title}}"><span class="glyphicon glyphicon-plus"></span></button></a>
-      {{else}}
-        <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="createGroup" data.classname = "{{title}}">New Group</button></a>
-      {{/if}}
+     
         
      <!--  </form> -->
     </div>
@@ -66,22 +42,9 @@
         <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
         <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
         <li><a href="/map?name={{title}}&sort=sort_distance" id="coordsURL">Distance</a></li>
-        <!-- {{#if alternate}}
-          <li><a href="/alternateMap?name={{title}}&sort=sort_start">Start Time</a></li>
-          <li><a href="/alternateMap?name={{title}}&sort=sort_end">End Time</a></li>
-        {{else}} -->
-          
-        <!-- {{/if}} -->
-        <!-- <li><a href="#">Location</a></li> -->
   		</ul>
   	</div>
         <a href="/viewMap?classname={{title}}"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
-   <!--  {{#if alternate}}
-      <a href="/viewMap?classname={{title}}&alternate=true"><button type="button" class="btn btn-default textBtn" id="viewMap" data.classname = "{{title}}">View Map</button></a>
-    {{else}} -->
-
-    <!-- {{/if}} -->
-
   	<br>
     <br>
 
@@ -101,7 +64,6 @@
             <div class='extraInfo' style='display:none'>Time: {{startTime}}-{{endTime}}</div>
             <div class='extraInfo' style ='display:none'>Location: {{location}}</div>
             <div class='extraInfo' style ='display:none; padding-bottom:10px' id="count{{_id}}" data-count="{{numMembers}}"># of People: {{numMembers}}</div>
-            <!-- <hr class='extraInfo' style="display:none"> -->
             <button type="button" class="btn btn-default extraInfo join-leave-btn" data-belongs="{{belongsToGroup}}" style='display:none' id="join{{_id}}" groupid="{{_id}}">
             Join Group
           </button>
@@ -119,19 +81,7 @@
       
 
 	</div>
-<<<<<<< HEAD
-  // <script>
-  //   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  //   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  //   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  //   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  //   ga('create', 'UA-48461831-2', 'study-buddies.herokuapp.com');
-  //   ga('send', 'pageview');
-  // </script>
-=======
->>>>>>> 8930e23194741eb38b5b961dccb4722c06066e6d
-    <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
   <script src="js/mapEvents.js"></script>
   <script src="js/course_events.js"></script>

@@ -70,9 +70,9 @@ module.exports = {
 
 		Class = mongoose.model('Class', classSchema);
 
-		Class.remove({}, function(err) { 
-			console.log('classes removed') 
-		});
+		// Class.remove({}, function(err) { 
+		// 	console.log('classes removed') 
+		// });
 
 		var newClass = new Class;
 		newClass.classname = 'MATH51';
