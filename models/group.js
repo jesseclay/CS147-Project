@@ -8,6 +8,7 @@ exports.addGroup = function(req, res) {
         var classname = req.query.classname;
         var name = req.query.groupname;
         var location = req.query.location;
+        if(location=="Custom Location") location = req.query.customLocationName;
         var latitude = parseFloat(req.query.latitude);
         var longitude = parseFloat(req.query.longitude);        
 

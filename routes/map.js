@@ -10,6 +10,7 @@ exports.view = function(req, res){
 	var hasGroups = false;
 
 	var sortByStart = true;
+	var sortByDistance = false;
 
     db.getGroup(function (groups) {
     	if(groups) {
@@ -21,6 +22,7 @@ exports.view = function(req, res){
     			groups = sortByEndTime(groups);
     			sortByStart = false;
     		} else if (sort == "sort_distance") {
+    			sortByDistance = true;
     			var my_lng = req.query.lng;
     			//console.log(my_lng);
 				var my_lat = req.query.lat;
@@ -35,6 +37,7 @@ exports.view = function(req, res){
 			'data' : groups,
 			'hasGroups' : hasGroups,
 			'sortByStart' : sortByStart,
+			'sortByDistance' : sortByDistance,
 			'alternate' : false
 			});
         }
