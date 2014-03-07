@@ -19,7 +19,11 @@
 
     <div class="container">
         <div class="main">
-
+            <div class="header">
+              <h2>My Groups</h2>
+              <input class="btn btn-primary btn-lg list-group-item addclass" style='display:none' type="submit" value="Add"/>
+            </div>
+            <hr>
             <div class="list-group">
             {{#each data}}
                 <a class="list-group-item" id="{{id}}" data-name="{{name}}" data-startTime="{{startTime}}" data-endTime="{{endTime}}" data-location="{{location}}">
