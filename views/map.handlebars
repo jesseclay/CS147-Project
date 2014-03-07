@@ -2,8 +2,7 @@
 
 <html>
 <head>
-<!-- Google Analytics Content Experiment code -->
-<!-- End of Google Analytics Content Experiment code -->
+
 	<title>Study Buddies</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +43,7 @@
   		<ul class="dropdown-menu" role="menu">
         <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
         <li><a href="/map?name={{title}}&sort=sort_end">End Time</a></li>
+        <li><a href="/map?name={{title}}&sort=sort_distance" id="coordsURL">Distance</a></li>
         <!-- {{#if alternate}}
           <li><a href="/alternateMap?name={{title}}&sort=sort_start">Start Time</a></li>
           <li><a href="/alternateMap?name={{title}}&sort=sort_end">End Time</a></li>
@@ -59,6 +59,7 @@
     {{else}} -->
 
     <!-- {{/if}} -->
+
   	<br>
     <br>
 
