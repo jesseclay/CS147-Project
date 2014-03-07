@@ -29,10 +29,9 @@ function initializePage() {
 			$(this).find('.nameContainer').css('width',$(this).width()-25-$(this).find('.checkBtn').width()+"px");
 		}
 	});
-	$("[id^=join]").unbind("click").bind("click", joinGroup);
-    $("[id^=leave]").unbind("click").bind("click", leaveGroup);
 
-
+	$(document).find('.nameContainer').css('width',($(document).find('.nameContainer').parent().width()-$(document).find('.valueContainer').width()-30-$(document).find('.checkBtn').width())+"px");
+	
     $.each($(".join-leave-btn"), function(index, value){
     	var belongsToGroup = parseInt(($(value).attr("data-belongs")));
     	console.log(belongsToGroup);
@@ -46,17 +45,21 @@ function initializePage() {
     	} 
 	});
 
+	$("[id^=join]").unbind("click").bind("click", joinGroup);
+    $("[id^=leave]").unbind("click").bind("click", leaveGroup);
+
     $("#createGroup").click(function(){
     	var endTime = new Date().getTime();
   		var timeSpent = endTime - startTime;
-    	ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
-    	ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
+    	// ga("send", "event", "createGroup", "click", 'timeSpent',timeSpent);
+    	// ga("send", "timing", "createGroupTime", 'timeSpent' ,timeSpent);
     });
 
     $("#viewMap").click(function(){
-    	ga("send", "event", "viewMap", "click");
-    	ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
+    	// ga("send", "event", "viewMap", "click");
+    	// ga("send", "timing", "viewMapTime", 'timeSpent' ,timeSpent);
     });
+
     getLocation();
 
 }

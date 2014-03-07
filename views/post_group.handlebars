@@ -24,9 +24,10 @@
 		<div class="post_group">
 		<form class="form-signin" role="form" method="get" action="/post_group_add">
 			<h2 class="form-signin-heading">Group Info</h2>
+			<br>
 			<input type="hidden" name="classname" value="{{title}}">
 			<input type="text" class="form-control" id="descript" placeholder="Description" name="groupname" required autofocus>
-          
+          	<br>
 			<input type="text" class="form-control date start" placeholder="Start Date" name="start_date" required>
 
 			<input type="text" class="form-control time start" placeholder="Start Time" name="start_time" required>
@@ -34,8 +35,9 @@
 			<input type="text" class="form-control date end" placeholder="End Date" name="end_date" required>
 
 			<input type="text" class="form-control time end" placeholder="End Time" name="end_time" required>
+			<br>
 			<select class="form-control" id="locationSelector" name="location">
-				<option id="currLoc" value="Current Location" selected>Current Location</option>
+				<option id="currLoc" value="Custom Location" selected>Current Location</option>
 				{{#each locData}}
 				  <option value="{{name}}" data-lat="{{lat}}" data-lng="{{lng}}">{{name}}</option>
 				{{/each}}
@@ -45,21 +47,15 @@
 
 			<input id="hiddenLng" type="hidden" name="longitude" value="">
 
+			<input id="customLocationName" class ="form-control" placeholder="Location Name" type="text" name="customLocationName"style="display: default;">
+			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
     	</form>
 		</div>
 
 	</div>
 
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-48461831-2', 'study-buddies.herokuapp.com');
-		ga('send', 'pageview');
-	</script>
+	
 	<script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>

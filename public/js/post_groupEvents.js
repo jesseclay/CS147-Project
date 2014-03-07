@@ -49,4 +49,10 @@ function setLocationFields(){
 	var selection = $("#locationSelector :selected");
 	$("#hiddenLat").attr("value",selection.attr("data-lat"));
 	$("#hiddenLng").attr("value",selection.attr("data-lng"));
+	if (selection.attr("value")=="Custom Location"){
+		$("#customLocationName").css("display", "default");
+	}
+	else{
+		$("#customLocationName").css("display", "none");
+	}
 }
