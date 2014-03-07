@@ -29,10 +29,14 @@
     <p class="orderLabel"> Order by: </p>
 		<div class="btn-group">
   		<button type="button" class="btn btn-default dropdown-toggle" id="dropdownFilter" data-toggle="dropdown">
-      {{#if sortByStart}}
-    	  Start Time
+      {{#if sortByDistance}}
+        Distance
       {{else}}
-        End Time
+        {{#if sortByStart}}
+    	     Start Time
+        {{else}}
+          End Time
+        {{/if}}
       {{/if}}
       <span class="caret"></span>
   		</button>
