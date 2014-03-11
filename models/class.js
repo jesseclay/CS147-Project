@@ -4,7 +4,8 @@ exports.addClass = function(req, res) {
         //check if class is already there
         //if there, add userid to array $addToSet
         //if not make a new class
-        var classname = req.query.name;
+        var classname = req.query.classname;
+        console.log("req query" + req.query)
         var userid = req.session.userid;
         console.log(classname);
   		console.log(userid);

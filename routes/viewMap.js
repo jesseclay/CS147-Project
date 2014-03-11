@@ -4,6 +4,9 @@ exports.view = function(req, res){
 	var db = require("../db")
     var classname = req.query.classname;
     var userid = req.session.userid;
+    if(userid === undefined) {
+        res.render('index');
+    }
     // db.getGroup(function (groups) {
     //     if(groups) {
     //         res.render('viewMap', {

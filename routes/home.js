@@ -3,6 +3,10 @@ var data = require('../data.json');
 exports.view = function(req, res){
 	var db = require("../db")
 	var userid = req.session.userid;
+    console.log("USERID: " + userid);
+    if(userid === undefined) {
+        res.render('index');
+    }
 	var courses = "";
     var hasCourses = false;
     db.getUserClasses(function (response) {

@@ -1,11 +1,17 @@
 
 exports.view = function(req, res){
 	var userid = req.session.userid;
+	if(userid === undefined) {
+    	res.render('index');
+    }
 	var classname = req.query.name;
 	var sort = req.query.sort;
 	var db = require("../db");
 	var hasGroups = false;
-    
+
+	var sortByStart = true;
+	var sortByDist = false;
+
     db.getGroup(function (groups) {
     	if(groups) {
     		console.log(groups);
@@ -14,13 +20,14 @@ exports.view = function(req, res){
     		}
     		if (sort === "sort_end") {
     			groups = sortByEndTime(groups);
+    			sortByStart = false;
     		} else if (sort == "sort_distance") {
+    			sortByDist = true;
     			var my_lng = req.query.lng;
     			//console.log(my_lng);
 				var my_lat = req.query.lat;
     			groups = sortByDistance(groups, my_lng, my_lat);
-    		}
-    		else {
+    		} else {
     			groups = sortByStartTime(groups);
     		}
     		groups = replaceTimes(groups);
@@ -29,6 +36,8 @@ exports.view = function(req, res){
 			'title' : classname,
 			'data' : groups,
 			'hasGroups' : hasGroups,
+			'sortByStart' : sortByStart,
+			'sortByDistance' : sortByDist,
 			'alternate' : false
 			});
         }
@@ -72,6 +81,8 @@ exports.sort = function(req, res){
 	var sort = req.params.sort;
 	var db = require("../db");
 	var hasGroups = false;
+	var sortByStart = true;
+	console.log("HIT SORT");
     db.getGroup(function (groups) {
     	if(groups) {
     		if(groups.length > 0) {
@@ -80,6 +91,8 @@ exports.sort = function(req, res){
     		if(sort === "sort_start") {
     			groups = sortByStartTime(groups);
     		} else if (sort === "sort_end") {
+    			sortByStart = false;
+    			console.log("HITTTTT FALSE")
     			groups = sortByEndTime(groups);
     		}
     		groups = replaceTimes(groups);
@@ -87,7 +100,8 @@ exports.sort = function(req, res){
 			res.render('map', {
 			'title' : classname,
 			'data' : groups,
-			'hasGroups' : hasGroups
+			'hasGroups' : hasGroups,
+			'sortByStart' : sortByStart 
 			});
         }
     }, classname);

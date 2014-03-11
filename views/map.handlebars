@@ -2,7 +2,6 @@
 
 <html>
 <head>
-
 	<title>Study Buddies</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,13 +24,21 @@
       <h2 class="title">{{title}}</h2>
 
         <a href="/post_group?classname={{title}}"><button type="button" class="btn btn-success createButton" id="createGroup" data.classname = "{{title}}"><span class="glyphicon glyphicon-plus"></span></button></a>
-
     </div>
     <br>
     <p class="orderLabel"> Order by: </p>
 		<div class="btn-group">
   		<button type="button" class="btn btn-default dropdown-toggle" id="dropdownFilter" data-toggle="dropdown">
-    	Start Time <span class="caret"></span>
+      {{#if sortByDistance}}
+        Distance
+      {{else}}
+        {{#if sortByStart}}
+    	     Start Time
+        {{else}}
+          End Time
+        {{/if}}
+      {{/if}}
+      <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu" role="menu">
         <li><a href="/map?name={{title}}&sort=sort_start">Start Time</a></li>
@@ -70,13 +77,29 @@
       {{/if}}
       </div>
 
-      <div class="delete_div">
-      <button type="button" class="btn-danger btn-lg delete_button" id="delete{{title}}" classname="{{title}}">Delete Course</button>
+      <div class="delete_warning-wrap">
+        <div class="delete_warning alert alert-warning">
+          <div>
+            <span class="glyphicon glyphicon-warning-sign row" style="font-size: x-large;"></span>
+          </div>
+          <div>
+            <label class="row"> Sure you want to delete {{title}}?</label>
+          </div>
+          <div>
+            <button class="btn-info btn-lg delete_button-submit">Cancel</button>
+            <button class="btn-danger btn-lg" id="delete{{title}}" classname="{{title}}"> Delete</button>
+          </div>
+        </div>
       </div>
-      
+
+      <div class="delete_div">
+        <div class="delete_button">
+          <button type="button" class="btn-danger btn-lg  pre_delete"  classname="{{title}}">Delete Course</button>
+        </div>
+      </div>
 
 	</div>
-    <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/jquery-1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
   <script src="js/mapEvents.js"></script>
   <script src="js/course_events.js"></script>

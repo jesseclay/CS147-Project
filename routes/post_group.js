@@ -1,6 +1,10 @@
 var data = require('../groupData.json');
 
 exports.view = function(req, res){
+	var userid = req.session.userid;
+	if(userid === undefined) {
+    	res.render('index');
+    }
 	var db = require("../db");
 	console.log(db);
 	db.getLoc(displayLoc);

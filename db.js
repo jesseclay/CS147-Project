@@ -38,9 +38,9 @@ module.exports = {
 		
 		User = mongoose.model('User', userSchema)
 
-		// User.remove({}, function(err) { 
-  //  			console.log('collection removed') 
-		// });
+		User.remove({}, function(err) { 
+   			console.log('collection removed') 
+		});
 		//GROUP
 		groupSchema = mongoose.Schema({
     		classname: String,
@@ -58,9 +58,9 @@ module.exports = {
 
 		Group = mongoose.model('Group', groupSchema)
 
-		// Group.remove({}, function(err) { 
-  // 			console.log('collection removed') 
-		// });
+		Group.remove({}, function(err) { 
+  			console.log('collection removed') 
+		});
 		
 		//CLASS
 		classSchema = mongoose.Schema({
