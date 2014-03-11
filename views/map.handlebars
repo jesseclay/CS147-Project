@@ -77,10 +77,26 @@
       {{/if}}
       </div>
 
-      <div class="delete_div">
-      <button type="button" class="btn-danger btn-lg delete_button" id="delete{{title}}" classname="{{title}}">Delete Course</button>
+      <div class="delete_warning-wrap">
+        <div class="delete_warning alert alert-warning">
+          <div>
+            <span class="glyphicon glyphicon-warning-sign row" style="font-size: x-large;"></span>
+          </div>
+          <div>
+            <label class="row"> Sure you want to delete {{title}}?</label>
+          </div>
+          <div>
+            <button class="btn-info btn-lg delete_button-submit">Cancel</button>
+            <button class="btn-danger btn-lg" id="delete{{title}}" classname="{{title}}"> Delete</button>
+          </div>
+        </div>
       </div>
-      
+
+      <div class="delete_div">
+        <div class="delete_button">
+          <button type="button" class="btn-danger btn-lg  pre_delete"  classname="{{title}}">Delete Course</button>
+        </div>
+      </div>
 
 	</div>
   <script src="js/jquery-1.11.0.js"></script>
