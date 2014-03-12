@@ -74,13 +74,13 @@ module.exports = {
 			console.log('classes removed') 
 		});
 
-		var newClass = new Class;
-		newClass.classname = 'MATH51';
-		newClass.save(function (err, group) {
-			if (err) {
-				console.log(err);//handle the error
-			}
-		});
+		// var newClass = new Class;
+		// newClass.classname = 'MATH51';
+		// newClass.save(function (err, group) {
+		// 	if (err) {
+		// 		console.log(err);//handle the error
+		// 	}
+		// });
 
 		//location
 		locSchema = mongoose.Schema({
