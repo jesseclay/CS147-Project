@@ -33,6 +33,10 @@
         <input type="submit" value="Register" class="btn  btn-sm"/>
           <!--<a href="/sign_up">Register</a>-->
         </form formaction = "/sign_up">
+        <br>
+        {{#if error}}
+          <div class="alert alert-warning error_box">Invalid username and password</div>
+        {{/if}}
     	</div>
 		</div>
   </div>

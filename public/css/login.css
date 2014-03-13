@@ -200,4 +200,11 @@ form.register
 {
     transition: background-color 0.5s ease;
 }
-*/
+
+.error_box
+{
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+}
