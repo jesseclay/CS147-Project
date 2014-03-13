@@ -13,7 +13,23 @@
     <link type="text/css" rel="stylesheet" media="all" href="style.css">
     <link href="css/home.css" rel="stylesheet">
     <link href="css/course_setup.css" rel="stylesheet">
-        
+  <script type="text/javascript">
+
+  if(("standalone" in window.navigator) && window.navigator.standalone){
+  var noddy, remotes = false;
+  document.addEventListener('click', function(event) {
+  noddy = event.target;
+  while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+    noddy = noddy.parentNode;
+  }
+  if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))
+  {
+    event.preventDefault();
+    document.location.href = noddy.href;
+  }
+  },false);
+  }
+  </script>
 </head>
 
 <body class="cbp-spmenu-push cbp-spmenu-push-toleft">
