@@ -7,14 +7,7 @@ exports.view = function(req, res){
     if(userid === undefined) {
         res.render('index');
     }
-    // db.getGroup(function (groups) {
-    //     if(groups) {
-    //         res.render('viewMap', {
-    //             'title' : classname,
-    //             'locData' : groups
-    //         });
-    //     }
-    // }, classname);
+
 
     var hasGroups = false;
     db.getGroup(function (groups) {
