@@ -121,8 +121,8 @@
                 icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png', null, null, null, new google.maps.Size(40, 40)),
                 zIndex: 2
               });
-              var start = putInTimeFormat(startTime);
-              var end = putInTimeFormat(endTime);
+              var start = startTime;
+              var end = endTime;
               var infoString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
@@ -176,29 +176,6 @@
               });
 
       }
-
-      function putInTimeFormat(dateString) {
-              var dateObject = new Date(dateString);
-              var hour = parseInt(dateObject.getHours());
-              var minutes = dateObject.getMinutes().toString();
-              var time = "";
-              var ampm = "am";
-              if(hour >= 12) {
-                ampm = "pm";
-                if(hour !== 12) {
-                  hour = hour - 12;
-                }
-              }
-              if(hour === 0) {
-                hour = 12;
-              }
-              if(minutes < 10) {
-                time = hour + ":" + minutes + "0" + ampm;
-              } else {
-                time = hour + ":" + minutes + ampm;
-              }
-              return time;
-            }
 
       function handleNoGeolocation(errorFlag) {
         if (errorFlag) {
